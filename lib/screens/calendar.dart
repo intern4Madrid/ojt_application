@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/log_in.dart';
 import 'package:ojt_app/screens/notification.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/widgets/calendar_table.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -32,6 +33,9 @@ class _CalendarState extends State<Calendar> {
             ),
           ],
         ),
+      ),
+      body: Container(
+        child: const CalendarWindow(),
       ),
       drawer: NavigationDrawer(
         children: [
