@@ -25,7 +25,7 @@ class _TaskAdminState extends State<TaskAdmin> {
         ],
         backgroundColor: kPrimaryColor,
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(30),
           child: Column(

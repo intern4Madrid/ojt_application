@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/add_assignment.dart';
 import 'package:ojt_app/screens/log_in.dart';
 import 'package:ojt_app/screens/notification.dart';
+import 'package:ojt_app/screens/to_do.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/widgets/task.dart';
 
@@ -53,7 +54,14 @@ class HomeScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.today_outlined),
                 title: Text("To-do"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ToDoScreen(),
+                    ),
+                  );
+                },
               ),
               Divider(
                 color: Colors.black,
