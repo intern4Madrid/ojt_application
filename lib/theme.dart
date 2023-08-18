@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFFD50000);
+const kPrimaryColor = Color(0xFFB71C1C);
 const kSecondaryColor = Color(0xFF59706F);
 const kDarkGreyColor = Color(0xFFA8A8A8);
 const kWhiteColor = Color(0xFFFFFFFF);
-const kZambeziColor = Color(0xFFC51162);
+const kZambeziColor = Color(0xFFE53935);
 const kBlackColor = Color(0xFF272726);
 const kTextFieldColor = Color(0xFF979797);
 

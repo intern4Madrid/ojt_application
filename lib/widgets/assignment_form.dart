@@ -11,11 +11,13 @@ class AssignmentForm extends StatefulWidget {
 class _AssignmentFormState extends State<AssignmentForm> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        buildTextFormField(),
-        buildTextFormField2(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          buildTextFormField(),
+          buildTextFormField2(),
+        ],
+      ),
     );
   }
 }

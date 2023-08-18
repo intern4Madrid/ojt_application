@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/widgets/assignment_form.dart';
+import 'package:ojt_app/widgets/bottom_navigation_bar_admin.dart';
+import 'package:ojt_app/widgets/file_picker.dart';
+import 'package:ojt_app/widgets/primary_button.dart';
 
 class Assignment extends StatefulWidget {
   const Assignment({super.key});
@@ -34,55 +37,77 @@ class _AssignmentState extends State<Assignment> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: Column(
-          children: [
-            Padding(
-              padding: kDefaultPadding,
-              child: AssignmentForm(),
-            ),
-            Padding(
-              padding: kDefaultPadding,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      final DateTime? datetime = await showDatePicker(
-                        context: context,
-                        initialDate: selectDate,
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(3000),
-                      );
-                      if (datetime != null) {
-                        setState(
-                          () {
-                            selectDate = datetime;
-                          },
-                        );
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
-                    ),
-                    child: Text(
-                      "Due date",
-                    ),
-                  ),
-                  Text(
-                    "${selectDate.month} - ${selectDate.day} - ${selectDate.year}",
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Column(
+            children: [
+              Padding(
+                padding: kDefaultPadding,
+                child: AssignmentForm(),
               ),
-            ),
-          ],
+              Padding(
+                padding: kDefaultPadding,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        final DateTime? datetime = await showDatePicker(
+                          context: context,
+                          initialDate: selectDate,
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(3000),
+                        );
+                        if (datetime != null) {
+                          setState(
+                            () {
+                              selectDate = datetime;
+                            },
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: kPrimaryColor,
+                      ),
+                      child: Text(
+                        "Due date",
+                      ),
+                    ),
+                    Text(
+                      "${selectDate.month} - ${selectDate.day} - ${selectDate.year}",
+                      style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: kDefaultPadding,
+                child: FilePicker(),
+              ),
+              SizedBox(
+                height: 450,
+              ),
+              Padding(
+                padding: kDefaultPadding,
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BottomNavigation(),
+                        ),
+                      );
+                    },
+                    child: PrimaryButton(buttonText: "Post Assignment")),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/log_in.dart';
 import 'package:ojt_app/screens/notification.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/widgets/timein_timeout.dart';
 
 class DTR extends StatefulWidget {
   const DTR({super.key});
@@ -33,6 +34,7 @@ class _DTRState extends State<DTR> {
           ],
         ),
       ),
+      body: TimeInTimeOut(),
       drawer: NavigationDrawer(
         children: [
           Column(

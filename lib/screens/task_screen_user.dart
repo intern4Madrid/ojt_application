@@ -17,11 +17,11 @@ class _TaskScreenState extends State<TaskScreen> {
         backgroundColor: kPrimaryColor,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: EdgeInsets.all(30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Due date:",
               style: TextStyle(
                 fontStyle: FontStyle.normal,
@@ -29,41 +29,41 @@ class _TaskScreenState extends State<TaskScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
-            const Text(
+            Text(
               "Assignment title:",
               style: TextStyle(
                   fontStyle: FontStyle.normal,
                   fontSize: 20,
                   fontWeight: FontWeight.w900),
             ),
-            const Divider(
+            Divider(
               color: Colors.black,
             ),
-            const Text(
+            Text(
               "Description:",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 50,
             ),
-            const Divider(
+            Divider(
               color: Colors.black,
             ),
-            const Text(
+            Text(
               "Attachment:",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 100,
             ),
-            const Divider(
+            Divider(
               color: Colors.black,
               thickness: 2,
             ),
