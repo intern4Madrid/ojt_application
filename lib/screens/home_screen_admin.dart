@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ojt_app/screens/add_assignment.dart';
 import 'package:ojt_app/screens/log_in.dart';
 import 'package:ojt_app/screens/notification.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/add_assignment.dart';
+import 'package:ojt_app/widgets/task.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,6 +30,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      body: Task(),
       drawer: NavigationDrawer(
         children: [
           Column(

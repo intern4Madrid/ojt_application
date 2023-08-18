@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/calendar.dart';
 import 'package:ojt_app/screens/dtr.dart';
-import 'package:ojt_app/screens/home_screen.dart';
+import 'package:ojt_app/screens/home_screen_admin.dart';
 import 'package:ojt_app/theme.dart';
 
 class BottomNavigation extends StatefulWidget {
