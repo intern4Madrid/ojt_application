@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/add_assignment.dart';
 import 'package:ojt_app/screens/log_in.dart';
@@ -5,6 +6,7 @@ import 'package:ojt_app/screens/notification.dart';
 import 'package:ojt_app/screens/to_do.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/widgets/task.dart';
+import 'package:open_file/open_file.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -107,10 +109,12 @@ class HomeScreen extends StatelessWidget {
             elevation: 8,
             backgroundColor: kPrimaryColor,
             onPressed: () {
-              Navigator.push(
-                context,
+              Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Assignment(),
+                  builder: (context) => Assignment(
+                    onOpenedFile: openFile,
+                    files: [],
+                  ),
                 ),
               );
             },
@@ -119,5 +123,9 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void openFile(PlatformFile file) {
+    OpenFile.open(file.path!);
   }
 }

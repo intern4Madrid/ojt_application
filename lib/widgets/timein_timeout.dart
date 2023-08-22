@@ -24,7 +24,7 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
   void recordTimeIn() {
     setState(() {
       timeInRecords.add(
-        DateTime.now().toString(),
+        DateTime.now().toString().split('.')[0],
       );
     });
   }
@@ -32,7 +32,7 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
   void recordTimeOut() {
     setState(() {
       timeOutRecords.add(
-        DateTime.now().toString(),
+        DateTime.now().toString().split('.')[0],
       );
     });
   }

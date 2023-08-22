@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/widgets/assignment_form.dart';
@@ -6,7 +7,10 @@ import 'package:ojt_app/widgets/file_picker.dart';
 import 'package:ojt_app/widgets/primary_button.dart';
 
 class Assignment extends StatefulWidget {
-  const Assignment({super.key});
+  final List<PlatformFile> files;
+  final ValueChanged<PlatformFile> onOpenedFile;
+  const Assignment(
+      {super.key, required this.files, required this.onOpenedFile});
 
   @override
   State<Assignment> createState() => _AssignmentState();
@@ -23,10 +27,10 @@ class _AssignmentState extends State<Assignment> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(73),
+              padding: EdgeInsets.all(60),
               child: Center(
                 child: Text(
-                  "Assignment",
+                  "Add assignment",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
