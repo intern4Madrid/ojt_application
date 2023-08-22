@@ -1,14 +1,15 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
 
-class FilePicker extends StatefulWidget {
-  const FilePicker({super.key});
+class FilePickerrrr extends StatefulWidget {
+  const FilePickerrrr({super.key});
 
   @override
-  State<FilePicker> createState() => _FilePickerState();
+  State<FilePickerrrr> createState() => _FilePickerrrrState();
 }
 
-class _FilePickerState extends State<FilePicker> {
+class _FilePickerrrrState extends State<FilePickerrrr> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,7 +18,9 @@ class _FilePickerState extends State<FilePicker> {
         Container(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(primary: kPrimaryColor),
-            onPressed: () {},
+            onPressed: () async {
+              final result = await FilePicker.platform.pickFiles();
+            },
             child: Text(
               "Upload file",
             ),

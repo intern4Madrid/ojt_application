@@ -39,7 +39,7 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
 
   calculatedTimeDifference(String timeIn, String timeOut) {
     if (timeIn.isEmpty || timeOut.isEmpty) {
-      return '0:00;';
+      return '0:00';
     }
 
     DateTime dateTimeIn = DateTime.parse(timeIn);
@@ -59,7 +59,7 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,63 +88,67 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
                 height: 20,
               ),
               SingleChildScrollView(
-                child: Table(
-                  border: TableBorder.all(),
-                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                  children: [
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text("Time In"),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text("Time Out"),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text("Durations"),
-                          ),
-                        ),
-                      ],
-                    ),
-                    for (int i = 0; i < timeInRecords.length; i++)
+                child: Padding(
+                  padding: kDefaultPadding,
+                  child: Table(
+                    border: TableBorder.all(),
+                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                    children: [
                       TableRow(
+                        decoration: BoxDecoration(border: Border()),
                         children: [
                           TableCell(
                             child: Center(
-                              child: Text(
-                                timeInRecords[i],
-                              ),
+                              child: Text("Time In"),
                             ),
                           ),
                           TableCell(
                             child: Center(
-                              child: Text(
-                                timeOutRecords.length > i
-                                    ? timeOutRecords[i]
-                                    : '',
-                              ),
+                              child: Text("Time Out"),
                             ),
                           ),
                           TableCell(
                             child: Center(
-                              child: Text(
-                                calculatedTimeDifference(
+                              child: Text("Durations"),
+                            ),
+                          ),
+                        ],
+                      ),
+                      for (int i = 0; i < timeInRecords.length; i++)
+                        TableRow(
+                          children: [
+                            TableCell(
+                              child: Center(
+                                child: Text(
                                   timeInRecords[i],
+                                ),
+                              ),
+                            ),
+                            TableCell(
+                              child: Center(
+                                child: Text(
                                   timeOutRecords.length > i
                                       ? timeOutRecords[i]
                                       : '',
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                  ],
+                            TableCell(
+                              child: Center(
+                                child: Text(
+                                  calculatedTimeDifference(
+                                    timeInRecords[i],
+                                    timeOutRecords.length > i
+                                        ? timeOutRecords[i]
+                                        : '',
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ],

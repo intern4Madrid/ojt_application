@@ -39,6 +39,7 @@ buildTextFormField2() {
 buildTextFormField() {
   return TextFormField(
     decoration: InputDecoration(
+      prefixIcon: Icon(Icons.assignment_outlined),
       hintText: 'Assignment title',
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(

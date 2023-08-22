@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/log_in.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
