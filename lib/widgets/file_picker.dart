@@ -20,8 +20,11 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(primary: kPrimaryColor),
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              primary: kPrimaryColor,
+              padding: EdgeInsets.all(10),
+            ),
             onPressed: () async {
               final result = await FilePicker.platform.pickFiles(
                 allowMultiple: true,
@@ -32,9 +35,11 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
 
               openFiles(result.files);
             },
-            child: Text(
+            label: Text(
               "Upload file",
+              style: TextStyle(fontSize: 17),
             ),
+            icon: Icon(Icons.upload_file_outlined),
           ),
         ),
       ],

@@ -1,17 +1,16 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/log_in.dart';
-import 'package:ojt_app/screens/notification.dart';
+import 'package:ojt_app/screens/add_assignment_screens.dart';
+import 'package:ojt_app/screens/log_in_screens.dart';
+import 'package:ojt_app/screens/notification_screens.dart';
+import 'package:ojt_app/screens/to_do_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/timein_timeout.dart';
+import 'package:ojt_app/widgets/task_homescreen_widgets.dart';
+import 'package:open_file/open_file.dart';
 
-class DTR extends StatefulWidget {
-  const DTR({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-  @override
-  State<DTR> createState() => _DTRState();
-}
-
-class _DTRState extends State<DTR> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +19,10 @@ class _DTRState extends State<DTR> {
         title: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.all(80),
               child: Center(
                 child: Text(
-                  "Daily Time Record",
+                  "TrainEase",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
@@ -34,7 +33,7 @@ class _DTRState extends State<DTR> {
           ],
         ),
       ),
-      body: TimeInTimeOut(),
+      body: Task(),
       drawer: NavigationDrawer(
         children: [
           Column(
@@ -57,7 +56,14 @@ class _DTRState extends State<DTR> {
               ListTile(
                 leading: Icon(Icons.today_outlined),
                 title: Text("To-do"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ToDoScreen(),
+                    ),
+                  );
+                },
               ),
               Divider(
                 color: Colors.black,
@@ -96,6 +102,28 @@ class _DTRState extends State<DTR> {
           ),
         ],
       ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            elevation: 8,
+            backgroundColor: kPrimaryColor,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddAssignment(),
+                ),
+              );
+            },
+            child: Icon(Icons.add),
+          ),
+        ],
+      ),
     );
+  }
+
+  void openFile(PlatformFile file) {
+    OpenFile.open(file.path!);
   }
 }

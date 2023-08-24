@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/reset_password_screen.dart';
-import 'package:ojt_app/screens/sign_up.dart';
-import 'package:ojt_app/widgets/bottom_navigation_bar_admin.dart';
-import 'package:ojt_app/widgets/login_form.dart';
-import 'package:ojt_app/widgets/primary_button.dart';
+import 'package:ojt_app/screens/reset_password_screens.dart';
+import 'package:ojt_app/screens/sign_up_screens.dart';
+import 'package:ojt_app/widgets/bottom_navigation_bar_widgets.dart';
+import 'package:ojt_app/widgets/login_form_widgets.dart';
+import 'package:ojt_app/widgets/primary_button_widgets.dart';
 
 import '../theme.dart';
 

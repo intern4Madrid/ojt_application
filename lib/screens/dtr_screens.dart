@@ -1,16 +1,17 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/add_assignment.dart';
-import 'package:ojt_app/screens/log_in.dart';
-import 'package:ojt_app/screens/notification.dart';
-import 'package:ojt_app/screens/to_do.dart';
+import 'package:ojt_app/screens/log_in_screens.dart';
+import 'package:ojt_app/screens/notification_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/task.dart';
-import 'package:open_file/open_file.dart';
+import 'package:ojt_app/widgets/dtr_timein_timeout_widgets.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class DTR extends StatefulWidget {
+  const DTR({super.key});
 
+  @override
+  State<DTR> createState() => _DTRState();
+}
+
+class _DTRState extends State<DTR> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +20,10 @@ class HomeScreen extends StatelessWidget {
         title: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(80),
+              padding: const EdgeInsets.all(50),
               child: Center(
                 child: Text(
-                  "TrainEase",
+                  "Daily Time Record",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Task(),
+      body: TimeInTimeOut(),
       drawer: NavigationDrawer(
         children: [
           Column(
@@ -56,14 +57,7 @@ class HomeScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.today_outlined),
                 title: Text("To-do"),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ToDoScreen(),
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
               Divider(
                 color: Colors.black,
@@ -102,30 +96,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            elevation: 8,
-            backgroundColor: kPrimaryColor,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => Assignment(
-                    onOpenedFile: openFile,
-                    files: [],
-                  ),
-                ),
-              );
-            },
-            child: Icon(Icons.add),
-          ),
-        ],
-      ),
     );
-  }
-
-  void openFile(PlatformFile file) {
-    OpenFile.open(file.path!);
   }
 }

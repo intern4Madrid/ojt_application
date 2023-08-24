@@ -1,22 +1,21 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/assignment_form.dart';
-import 'package:ojt_app/widgets/bottom_navigation_bar_admin.dart';
+import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
+import 'package:ojt_app/widgets/add_assignment_form_widgets.dart';
+import 'package:ojt_app/widgets/bottom_navigation_bar_widgets.dart';
 import 'package:ojt_app/widgets/file_picker.dart';
-import 'package:ojt_app/widgets/primary_button.dart';
+import 'package:ojt_app/widgets/primary_button_widgets.dart';
 
-class Assignment extends StatefulWidget {
-  final List<PlatformFile> files;
-  final ValueChanged<PlatformFile> onOpenedFile;
-  const Assignment(
-      {super.key, required this.files, required this.onOpenedFile});
+class AddAssignment extends StatefulWidget {
+  const AddAssignment({
+    super.key,
+  });
 
   @override
-  State<Assignment> createState() => _AssignmentState();
+  State<AddAssignment> createState() => _AddAssignmentState();
 }
 
-class _AssignmentState extends State<Assignment> {
+class _AddAssignmentState extends State<AddAssignment> {
   DateTime selectDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -50,13 +49,14 @@ class _AssignmentState extends State<Assignment> {
                 padding: kDefaultPadding,
                 child: AssignmentForm(),
               ),
+              SizedBox(height: 10),
               Padding(
                 padding: kDefaultPadding,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ElevatedButton(
+                    ElevatedButton.icon(
                       onPressed: () async {
                         final DateTime? datetime = await showDatePicker(
                           context: context,
@@ -74,10 +74,13 @@ class _AssignmentState extends State<Assignment> {
                       },
                       style: ElevatedButton.styleFrom(
                         primary: kPrimaryColor,
+                        padding: EdgeInsets.all(10),
                       ),
-                      child: Text(
+                      label: Text(
                         "Due date",
+                        style: TextStyle(fontSize: 17),
                       ),
+                      icon: Icon(Icons.calendar_today_outlined),
                     ),
                     Text(
                       "${selectDate.month} - ${selectDate.day} - ${selectDate.year}",
@@ -90,17 +93,21 @@ class _AssignmentState extends State<Assignment> {
                   ],
                 ),
               ),
+              SizedBox(height: 10),
               Padding(
                 padding: kDefaultPadding,
                 child: FilePickerrrr(),
               ),
               SizedBox(
-                height: 450,
+                height: 440,
               ),
               Padding(
                 padding: kDefaultPadding,
                 child: GestureDetector(
                     onTap: () {
+                      Taskkk.getAssign();
+                      Taskkk.getDescription();
+                      Taskkk.getDueDate();
                       Navigator.push(
                         context,
                         MaterialPageRoute(

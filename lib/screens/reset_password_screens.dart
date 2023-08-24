@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/log_in.dart';
+import 'package:ojt_app/screens/log_in_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/primary_button.dart';
-import 'package:ojt_app/widgets/reset_form.dart';
+import 'package:ojt_app/widgets/primary_button_widgets.dart';
+import 'package:ojt_app/widgets/reset_passwordform_widgets.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});

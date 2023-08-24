@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/assigned.dart';
-import 'package:ojt_app/widgets/completed.dart';
+import 'package:ojt_app/widgets/to_do_assigned_widgets.dart';
+import 'package:ojt_app/widgets/to_do_completed_widgets.dart';
 
 class ToDoScreen extends StatefulWidget {
   const ToDoScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/log_in.dart';
+import 'package:ojt_app/screens/log_in_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/primary_button.dart';
-import 'package:ojt_app/widgets/sign_up_form.dart';
+import 'package:ojt_app/widgets/create_account_widgets.dart';
+import 'package:ojt_app/widgets/primary_button_widgets.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
