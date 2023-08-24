@@ -1,4 +1,3 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/add_assignment_screens.dart';
 import 'package:ojt_app/screens/log_in_screens.dart';
@@ -6,11 +5,15 @@ import 'package:ojt_app/screens/notification_screens.dart';
 import 'package:ojt_app/screens/to_do_screens.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/widgets/task_homescreen_widgets.dart';
-import 'package:open_file/open_file.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,12 +90,45 @@ class HomeScreen extends StatelessWidget {
                 leading: Icon(Icons.logout_outlined),
                 title: Text("Sign out"),
                 onTap: () async {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
-                    ),
-                  );
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          backgroundColor: Colors.white,
+                          title: Text("Are you sure you want to Log out?"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("Cancel"),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Confirm",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      });
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => LoginScreen(),
+                  //   ),
+                  // );
                 },
               ),
               Divider(
@@ -105,7 +141,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
+          FloatingActionButton.extended(
             elevation: 8,
             backgroundColor: kPrimaryColor,
             onPressed: () {
@@ -116,14 +152,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               );
             },
-            child: Icon(Icons.add),
+            label: Text("Add assignmet"),
           ),
         ],
       ),
     );
-  }
-
-  void openFile(PlatformFile file) {
-    OpenFile.open(file.path!);
   }
 }

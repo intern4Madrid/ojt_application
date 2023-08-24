@@ -132,7 +132,7 @@ class _CalendarWindowState extends State<CalendarWindow> {
             TableCalendar(
               focusedDay: today,
               firstDay: DateTime.utc(2000),
-              lastDay: DateTime.utc(2030),
+              lastDay: DateTime.utc(3000),
               locale: "en_US",
               rowHeight: 50,
               headerStyle: HeaderStyle(

@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/log_in_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/create_account_widgets.dart';
+import 'package:ojt_app/utils/controller/sign_up_controller.dart';
 import 'package:ojt_app/widgets/primary_button_widgets.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+SignUpController signUpController = SignUpController();
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  bool _isHiddenPassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 100,
+              height: 50,
             ),
             Padding(
               padding: kDefaultPadding,
@@ -59,24 +67,96 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 50,
             ),
             Padding(
               padding: kDefaultPadding,
-              child: SignUpForm(),
+              child: TextFormField(
+                controller: signUpController.firstname,
+                decoration: const InputDecoration(
+                  labelText: 'Firstname',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: kDefaultPadding,
+              child: TextFormField(
+                controller: signUpController.lastname,
+                decoration: const InputDecoration(
+                  labelText: 'Lastname',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: kDefaultPadding,
+              child: TextFormField(
+                controller: signUpController.email,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: kDefaultPadding,
+              child: TextFormField(
+                controller: signUpController.phone,
+                decoration: const InputDecoration(
+                  labelText: 'Phone',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: kDefaultPadding,
+              child: TextFormField(
+                obscureText: _isHiddenPassword,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: signUpController.password,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: const OutlineInputBorder(),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        _isHiddenPassword = !_isHiddenPassword;
+                      });
+                    },
+                    child: const Icon(Icons.visibility),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: kDefaultPadding,
+              child: TextFormField(
+                obscureText: _isHiddenPassword,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: signUpController.confirmpassword,
+                decoration: InputDecoration(
+                  labelText: 'Confirm Password',
+                  border: const OutlineInputBorder(),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        _isHiddenPassword = !_isHiddenPassword;
+                      });
+                    },
+                    child: const Icon(Icons.visibility),
+                  ),
+                ),
+              ),
             ),
             SizedBox(
-              height: 20,
+              height: 170,
             ),
-            // Padding(
-            //   padding: kDefaultPadding,
-            //   child: CheckBox(
-            //     text: 'Agree to Terms and Condition.',
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -94,23 +174,6 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            // Padding(
-            //   padding: kDefaultPadding,
-            //   child: Text(
-            //     "Or Log In with:",
-            //     style: subTitle.copyWith(color: kBlackColor),
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
-            // Padding(
-            //   padding: kDefaultPadding,
-            //   child: LogInOption(),
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
           ],
         ),
       ),
