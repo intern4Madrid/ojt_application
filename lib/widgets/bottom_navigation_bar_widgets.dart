@@ -15,11 +15,12 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   int _currentIndex = 0;
   PageController controller = PageController(initialPage: 0);
-  static final List<Widget> _widgetOption = <Widget>[
-    const KeepAlive(keepAlive: true, child: HomeScreen()),
-    const KeepAlive(keepAlive: true, child: DTR()),
-    const KeepAlive(keepAlive: true, child: Calendar()),
+  final List<Widget> _widgetOption = <Widget>[
+    HomeScreen(),
+    DTR(),
+    Calendar(),
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _currentIndex = index;
