@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:ojt_app/screens/log_in_screens.dart';
 import 'package:ojt_app/screens/notification_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/dtr_approved_widgets.dart';
+import 'package:ojt_app/user_widgets/dtr_timein_timeout_widgets.dart';
 
-class DTR extends StatefulWidget {
-  const DTR({super.key});
+class UserDTR extends StatefulWidget {
+  const UserDTR({super.key});
 
   @override
-  State<DTR> createState() => _DTRState();
+  State<UserDTR> createState() => _UserDTRState();
 }
 
-class _DTRState extends State<DTR> {
+class _UserDTRState extends State<UserDTR> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +34,7 @@ class _DTRState extends State<DTR> {
           ],
         ),
       ),
-      body: DTRApproval(),
+      body: TimeInTimeOutPage(),
       drawer: NavigationDrawer(
         children: [
           Column(

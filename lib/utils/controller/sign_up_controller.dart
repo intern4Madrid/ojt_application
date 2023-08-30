@@ -7,4 +7,5 @@ class SignUpController extends ChangeNotifier {
   TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
+  TextEditingController userlevel = TextEditingController();
 }

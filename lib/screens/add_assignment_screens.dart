@@ -60,7 +60,7 @@ class _AddAssignmentState extends State<AddAssignment> {
                     labelStyle: TextStyle(
                       color: kPrimaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 15,
                     ),
                     prefixIcon: Icon(
                       Icons.description_outlined,
@@ -85,7 +85,7 @@ class _AddAssignmentState extends State<AddAssignment> {
                     labelStyle: TextStyle(
                       color: kPrimaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 15,
                     ),
                     prefixIcon: Icon(
                       Icons.description_outlined,
@@ -118,7 +118,7 @@ class _AddAssignmentState extends State<AddAssignment> {
                     labelStyle: TextStyle(
                       color: kPrimaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 15,
                     ),
                   ),
                   onTap: () async {
@@ -140,7 +140,6 @@ class _AddAssignmentState extends State<AddAssignment> {
                     }
                   },
                 ),
-
                 // TextFormField(
                 //   controller: assignmentController.duedate,
                 //   onChanged: (value) {

@@ -3,14 +3,14 @@ import 'package:ojt_app/theme.dart';
 
 import '../utils/getter_setter/taskkk_getter_setter.dart';
 
-class AssigmentTask extends StatefulWidget {
-  const AssigmentTask({super.key});
+class UserTask extends StatefulWidget {
+  const UserTask({super.key});
 
   @override
-  State<AssigmentTask> createState() => _AssigmentTaskState();
+  State<UserTask> createState() => _UserTaskState();
 }
 
-class _AssigmentTaskState extends State<AssigmentTask> {
+class _UserTaskState extends State<UserTask> {
   String description = Taskkk.getDescription();
   String assign = Taskkk.getAssign();
   String duedate = Taskkk.getDueDate();

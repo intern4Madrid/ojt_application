@@ -1,4 +1,4 @@
-class SignUppp {
+class LoggedIn {
   static String _firstname = '';
   static void setFirstName(String firstname) {
     _firstname = firstname;
