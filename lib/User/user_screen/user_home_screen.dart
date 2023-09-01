@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/add_assignment_screens.dart';
+import 'package:ojt_app/admin/admin_widgets/task_homescreen_widgets.dart';
 import 'package:ojt_app/screens/log_in_screens.dart';
 import 'package:ojt_app/screens/notification_screens.dart';
+import 'package:ojt_app/screens/to_do_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/task_homescreen_widgets.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class UserHomeScreen extends StatefulWidget {
+  const UserHomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<UserHomeScreen> createState() => _UserHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UserHomeScreenState extends State<UserHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +51,21 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 "Name",
                 style: titleText,
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              ListTile(
+                leading: Icon(Icons.today_outlined),
+                title: Text("To-do"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ToDoScreen(),
+                    ),
+                  );
+                },
               ),
               Divider(
                 color: Colors.black,
@@ -110,28 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
               ),
-              Divider(
-                color: Colors.black,
-              ),
             ],
-          ),
-        ],
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton.extended(
-            elevation: 8,
-            backgroundColor: kPrimaryColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddAssignment(),
-                ),
-              );
-            },
-            label: Text("Add assignmet"),
           ),
         ],
       ),

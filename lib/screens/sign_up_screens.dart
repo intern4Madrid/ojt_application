@@ -8,8 +8,6 @@ import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/sign_up_controller.dart';
 import 'package:ojt_app/utils/getter_setter/sign_up_getter_setter.dart';
 
-String _message = '';
-
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -318,7 +316,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 width: 340,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
+                      backgroundColor: kPrimaryColor,
                       elevation: 3,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),

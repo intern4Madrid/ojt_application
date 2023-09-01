@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ojt_app/admin/admin_widgets/student_info_widgets.dart';
 import 'package:ojt_app/theme.dart';
 
 class ListOfStudents extends StatefulWidget {
@@ -17,7 +18,14 @@ class _ListOfStudentsState extends State<ListOfStudents> {
           Padding(
             padding: const EdgeInsets.all(10),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StudentInformation(),
+                  ),
+                );
+              },
               child: Container(
                 height: 50,
                 decoration: BoxDecoration(

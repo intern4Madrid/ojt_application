@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ojt_app/admin/admin_widgets/assignment_task_admin.dart';
+import 'package:ojt_app/admin/admin_widgets/list_students_task_widgets.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/widgets/assignment_task_admin.dart';
-import 'package:ojt_app/widgets/list_students_task_widgets.dart';
 
 class TaskAdmin extends StatefulWidget {
   const TaskAdmin({super.key});

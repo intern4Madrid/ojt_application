@@ -67,7 +67,7 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
+                      backgroundColor: kPrimaryColor,
                     ),
                     onPressed: recordTimeIn,
                     child: Text(
@@ -76,7 +76,7 @@ class _TimeInTimeOutPageState extends State<TimeInTimeOutPage> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
+                      backgroundColor: kPrimaryColor,
                     ),
                     onPressed: recordTimeOut,
                     child: Text(

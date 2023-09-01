@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class Login {
   Future<http.Response> login(String email, String password) async {
     try {
-      String url = 'http://192.168.0.130:5000/api/login';
+      String url = 'http://192.168.0.131:5000/api/login';
       final http.Response response = await http.post(
         Uri.parse(url),
         headers: <String, String>{

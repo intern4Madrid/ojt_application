@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ojt_app/admin/admin_widgets/bottom_navigation_bar_widgets.dart';
+import 'package:ojt_app/admin/admin_widgets/file_picker.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/assignment_controller.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
-import 'package:ojt_app/widgets/bottom_navigation_bar_widgets.dart';
-import 'package:ojt_app/widgets/file_picker.dart';
 import 'package:ojt_app/widgets/primary_button_widgets.dart';
 
 class AddAssignment extends StatefulWidget {

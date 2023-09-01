@@ -1,22 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/calendar_screens.dart';
-import 'package:ojt_app/screens/home_screen_screens.dart';
+import 'package:ojt_app/User/user_screen/user_dtr_screens.dart';
+import 'package:ojt_app/User/user_screen/user_home_screen.dart';
+import 'package:ojt_app/admin/admin_screen/calendar_screens.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/user_screen/user_dtr_screens.dart';
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+class UserBottomNavigation extends StatefulWidget {
+  const UserBottomNavigation({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  State<UserBottomNavigation> createState() => _UserBottomNavigationState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _UserBottomNavigationState extends State<UserBottomNavigation> {
   int _currentIndex = 0;
   PageController controller = PageController(initialPage: 0);
   final List<Widget> _widgetOption = <Widget>[
-    HomeScreen(),
+    UserHomeScreen(),
     UserDTR(),
     Calendar(),
   ];

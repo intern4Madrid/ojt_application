@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
 
-import '../utils/getter_setter/taskkk_getter_setter.dart';
+import '../../utils/getter_setter/taskkk_getter_setter.dart';
 
 class AssigmentTask extends StatefulWidget {
   const AssigmentTask({super.key});

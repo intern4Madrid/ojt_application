@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:ojt_app/admin/admin_widgets/bottom_navigation_bar_widgets.dart';
 import 'package:ojt_app/core/services/login_api.dart';
 import 'package:ojt_app/screens/reset_password_screens.dart';
 import 'package:ojt_app/screens/sign_up_screens.dart';
-import 'package:ojt_app/widgets/bottom_navigation_bar_widgets.dart';
 
 import '../theme.dart';
 
@@ -18,7 +15,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool obscureText = false;
-  bool _isHiddenPassword = true;
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
 
@@ -125,7 +121,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       labelText: 'Password',
                       hintText: 'Enter your password',
-                      labelStyle: const TextStyle(letterSpacing: 1.5),
+                      labelStyle: const TextStyle(
+                          fontStyle: FontStyle.italic, letterSpacing: 1.5),
                       hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                       prefixIcon: const Icon(Icons.fingerprint_outlined),
                       suffixIcon: GestureDetector(
@@ -175,7 +172,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 20,
                 ),
-
                 // GestureDetector(
                 //   onTap: () {
                 //     Navigator.push(
@@ -201,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 340,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: kPrimaryColor,
+                          backgroundColor: kPrimaryColor,
                           elevation: 3,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
@@ -212,44 +208,50 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () async {
-                        print('>>>>>CLICK BUTTON<<<<');
-                        if (_formKey.currentState!.validate()) {
-                          print('---PASOK---');
-                          http.Response response = await apilogin.login(
-                              _emailController.text, _passwordController.text);
-                          if (response.statusCode == 200 &&
-                              jsonDecode(response.body)['message'] !=
-                                  'login failed') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BottomNavigation(),
-                              ),
-                            );
-                            print('---PASOK2---');
-                          } else {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: const Text(
-                                  'Error',
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                content: Text("Invalid username or password"),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }
-                        }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BottomNavigation(),
+                          ),
+                        );
+                        // print('>>>>>CLICK BUTTON<<<<');
+                        // if (_formKey.currentState!.validate()) {
+                        //   print('---PASOK---');
+                        //   http.Response response = await apilogin.login(
+                        //       _emailController.text, _passwordController.text);
+                        //   if (response.statusCode == 200 &&
+                        //       jsonDecode(response.body)['message'] !=
+                        //           'login failed') {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => UserBottomNavigation(),
+                        //       ),
+                        //     );
+                        //     print('---PASOK2---');
+                        //   } else {
+                        //     showDialog(
+                        //       context: context,
+                        //       builder: (context) => AlertDialog(
+                        //         title: const Text(
+                        //           'Error',
+                        //           style: TextStyle(
+                        //               fontSize: 25,
+                        //               fontWeight: FontWeight.bold),
+                        //         ),
+                        //         content: Text("Invalid username or password"),
+                        //         actions: [
+                        //           TextButton(
+                        //             onPressed: () {
+                        //               Navigator.of(context).pop();
+                        //             },
+                        //             child: const Text('OK'),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     );
+                        //   }
+                        // }
                         ;
                       },
                     ),

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
 
-import '../utils/getter_setter/taskkk_getter_setter.dart';
-
-class UserTask extends StatefulWidget {
-  const UserTask({super.key});
+class TaskUser extends StatefulWidget {
+  const TaskUser({super.key});
 
   @override
-  State<UserTask> createState() => _UserTaskState();
+  State<TaskUser> createState() => _TaskUserState();
 }
 
-class _UserTaskState extends State<UserTask> {
+class _TaskUserState extends State<TaskUser> {
   String description = Taskkk.getDescription();
   String assign = Taskkk.getAssign();
   String duedate = Taskkk.getDueDate();

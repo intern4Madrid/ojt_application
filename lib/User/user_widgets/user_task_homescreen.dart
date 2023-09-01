@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/task_admin_screens.dart';
+import 'package:ojt_app/User/user_screen/task_user_screen.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
 
-class Task extends StatefulWidget {
-  const Task({super.key});
+class UserTask extends StatefulWidget {
+  const UserTask({super.key});
 
   @override
-  State<Task> createState() => _TaskState();
+  State<UserTask> createState() => _UserTaskState();
 }
 
-class _TaskState extends State<Task> {
+class _UserTaskState extends State<UserTask> {
   String description = Taskkk.getDescription();
   String assign = Taskkk.getAssign();
   String duedate = Taskkk.getDueDate();
@@ -27,7 +27,7 @@ class _TaskState extends State<Task> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TaskAdmin(),
+                    builder: (context) => TaskUser(),
                   ),
                 );
               },
