@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/admin/admin_widgets/dtr_approved_widgets.dart';
-import 'package:ojt_app/screens/log_in_screens.dart';
-import 'package:ojt_app/screens/notification_screens.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/w.screens/log_in_screens.dart';
+import 'package:ojt_app/w.screens/notification_screens.dart';
 
 class DTR extends StatefulWidget {
   const DTR({super.key});
@@ -50,14 +50,6 @@ class _DTRState extends State<DTR> {
               Text(
                 "Name",
                 style: titleText,
-              ),
-              Divider(
-                color: Colors.black,
-              ),
-              ListTile(
-                leading: Icon(Icons.today_outlined),
-                title: Text("To-do"),
-                onTap: () {},
               ),
               Divider(
                 color: Colors.black,

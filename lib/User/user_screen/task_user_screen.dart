@@ -17,6 +17,9 @@ class _TaskUserState extends State<TaskUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+      ),
       body: Padding(
         padding: kDefaultPadding,
         child: Column(

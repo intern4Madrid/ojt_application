@@ -22,6 +22,9 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
         Container(
           child: ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
               backgroundColor: kPrimaryColor,
               padding: EdgeInsets.all(10),
             ),
@@ -37,7 +40,10 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
             },
             label: Text(
               "Upload file",
-              style: TextStyle(fontSize: 17),
+              style: TextStyle(
+                fontSize: 17,
+                fontStyle: FontStyle.italic,
+              ),
             ),
             icon: Icon(Icons.upload_file_outlined),
           ),
@@ -49,7 +55,7 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
   void openFiles(List<PlatformFile> files) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => FilePage(
+        builder: (context) => FilePages(
           files: files,
           onOpenedFile: openFile,
         ),

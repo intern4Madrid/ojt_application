@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/admin/admin_screen/add_assignment_screens.dart';
 import 'package:ojt_app/admin/admin_widgets/task_homescreen_widgets.dart';
-import 'package:ojt_app/screens/log_in_screens.dart';
-import 'package:ojt_app/screens/notification_screens.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
+import 'package:ojt_app/w.screens/log_in_screens.dart';
+import 'package:ojt_app/w.screens/notification_screens.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String email = LoggedIn.getEmail();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 10,
               ),
               Text(
-                "Name",
-                style: titleText,
+                email,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 15,
+                ),
               ),
               Divider(
                 color: Colors.black,

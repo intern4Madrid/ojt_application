@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ojt_app/User/user_screen/user_calendar.dart';
 import 'package:ojt_app/User/user_screen/user_dtr_screens.dart';
 import 'package:ojt_app/User/user_screen/user_home_screen.dart';
-import 'package:ojt_app/admin/admin_screen/calendar_screens.dart';
 import 'package:ojt_app/theme.dart';
 
 class UserBottomNavigation extends StatefulWidget {
@@ -18,7 +18,7 @@ class _UserBottomNavigationState extends State<UserBottomNavigation> {
   final List<Widget> _widgetOption = <Widget>[
     UserHomeScreen(),
     UserDTR(),
-    Calendar(),
+    UserCalendar(),
   ];
 
   void _onItemTapped(int index) {

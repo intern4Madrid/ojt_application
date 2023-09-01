@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:ojt_app/core/services/create_account_api.dart';
-import 'package:ojt_app/screens/log_in_screens.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/sign_up_controller.dart';
 import 'package:ojt_app/utils/getter_setter/sign_up_getter_setter.dart';
+import 'package:ojt_app/w.screens/log_in_screens.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

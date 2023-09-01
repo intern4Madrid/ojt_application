@@ -13,7 +13,7 @@ class CreateUserAPI {
       String confirmPassword,
       String userLevel) async {
     try {
-      String url = 'http://10.21.0.108:5000/api/create_user';
+      String url = 'http://192.168.0.131:5000/api/create_user';
       final http.Response response = await http.post(
         Uri.parse(url),
         headers: {'Content-Type': 'application/json'},

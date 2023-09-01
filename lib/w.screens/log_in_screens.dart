@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:ojt_app/User/user_widgets/user_bottom_navigation_bar_widgets.dart';
 import 'package:ojt_app/admin/admin_widgets/bottom_navigation_bar_widgets.dart';
 import 'package:ojt_app/core/services/login_api.dart';
-import 'package:ojt_app/screens/reset_password_screens.dart';
-import 'package:ojt_app/screens/sign_up_screens.dart';
+import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
+import 'package:ojt_app/w.screens/reset_password_screens.dart';
+import 'package:ojt_app/w.screens/sign_up_screens.dart';
 
 import '../theme.dart';
 
@@ -17,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool obscureText = false;
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
+  String userLevel = LoggedIn.getUserLevel();
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -208,50 +214,65 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () async {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BottomNavigation(),
-                          ),
-                        );
-                        // print('>>>>>CLICK BUTTON<<<<');
-                        // if (_formKey.currentState!.validate()) {
-                        //   print('---PASOK---');
-                        //   http.Response response = await apilogin.login(
-                        //       _emailController.text, _passwordController.text);
-                        //   if (response.statusCode == 200 &&
-                        //       jsonDecode(response.body)['message'] !=
-                        //           'login failed') {
-                        //     Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //         builder: (context) => UserBottomNavigation(),
-                        //       ),
-                        //     );
-                        //     print('---PASOK2---');
-                        //   } else {
-                        //     showDialog(
-                        //       context: context,
-                        //       builder: (context) => AlertDialog(
-                        //         title: const Text(
-                        //           'Error',
-                        //           style: TextStyle(
-                        //               fontSize: 25,
-                        //               fontWeight: FontWeight.bold),
-                        //         ),
-                        //         content: Text("Invalid username or password"),
-                        //         actions: [
-                        //           TextButton(
-                        //             onPressed: () {
-                        //               Navigator.of(context).pop();
-                        //             },
-                        //             child: const Text('OK'),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     );
-                        //   }
-                        // }
+                        print('>>>>>CLICK BUTTON<<<<');
+                        if (_formKey.currentState!.validate()) {
+                          print('---PASOK---');
+                          http.Response response = await apilogin.login(
+                              _emailController.text, _passwordController.text);
+                          if (response.statusCode == 200 &&
+                              jsonDecode(response.body)['message'] !=
+                                  'login failed') {
+                            if (jsonDecode(response.body)['user_level'] ==
+                                'Admin') {
+                              print('---ADMIN LOGIN---');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BottomNavigation(),
+                                ),
+                              );
+                            } else if (jsonDecode(
+                                    response.body)['user_level'] ==
+                                'User') {
+                              print('---USER LOGIN---');
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UserBottomNavigation(),
+                                ),
+                              );
+                            }
+
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => BottomNavigation(),
+                            //   ),
+                            // );
+                            // print('---PASOK2---');
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: const Text(
+                                  'Error',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                content: Text("Invalid username or password"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        }
                         ;
                       },
                     ),

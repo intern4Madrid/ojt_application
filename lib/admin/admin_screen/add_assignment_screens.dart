@@ -49,7 +49,7 @@ class _AddAssignmentState extends State<AddAssignment> {
           child: Column(
             children: [
               Padding(
-                padding: kDefaultPadding,
+                padding: EdgeInsets.all(10),
                 child: TextFormField(
                   controller: assignmentController.assign,
                   onChanged: (value) {
@@ -57,14 +57,13 @@ class _AddAssignmentState extends State<AddAssignment> {
                   },
                   decoration: InputDecoration(
                     labelText: 'Title',
-                    labelStyle: TextStyle(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
+                    hintText: 'Enter your title',
+                    labelStyle: const TextStyle(
+                        fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                    hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                     prefixIcon: Icon(
-                      Icons.description_outlined,
-                      color: kPrimaryColor,
+                      Icons.title_outlined,
+                      color: Colors.black,
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -72,9 +71,8 @@ class _AddAssignmentState extends State<AddAssignment> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
               Padding(
-                padding: kDefaultPadding,
+                padding: EdgeInsets.all(10),
                 child: TextFormField(
                   controller: assignmentController.description,
                   onChanged: (value) {
@@ -82,14 +80,13 @@ class _AddAssignmentState extends State<AddAssignment> {
                   },
                   decoration: InputDecoration(
                     labelText: 'Description',
-                    labelStyle: TextStyle(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
+                    hintText: 'Enter your description',
+                    labelStyle: const TextStyle(
+                        fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                    hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                     prefixIcon: Icon(
-                      Icons.description_outlined,
-                      color: kPrimaryColor,
+                      Icons.pages_outlined,
+                      color: Colors.black,
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -97,9 +94,8 @@ class _AddAssignmentState extends State<AddAssignment> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
               Padding(
-                padding: kDefaultPadding,
+                padding: EdgeInsets.all(10),
                 child: TextFormField(
                   controller: assignmentController.duedate,
                   onChanged: (value) {
@@ -109,17 +105,14 @@ class _AddAssignmentState extends State<AddAssignment> {
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.calendar_today_outlined,
-                      color: kPrimaryColor,
+                      color: Colors.black,
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     labelText: 'Select Date',
-                    labelStyle: TextStyle(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
+                    labelStyle: const TextStyle(
+                        fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   ),
                   onTap: () async {
                     DateTime? datetime = await showDatePicker(
@@ -140,94 +133,13 @@ class _AddAssignmentState extends State<AddAssignment> {
                     }
                   },
                 ),
-                // TextFormField(
-                //   controller: assignmentController.duedate,
-                //   onChanged: (value) {
-                //     Taskkk.setDueDate(value);
-                //   },
-                //   decoration: InputDecoration(
-                //     prefixIcon: Icon(
-                //       Icons.calendar_today_outlined,
-                //       color: kPrimaryColor,
-                //     ),
-                //     border: OutlineInputBorder(
-                //       borderRadius: BorderRadius.circular(12),
-                //     ),
-                //     labelText: 'Select Date',
-                //     labelStyle: TextStyle(
-                //       color: kPrimaryColor,
-                //       fontWeight: FontWeight.bold,
-                //       fontSize: 25,
-                //     ),
-                //   ),
-                //   onTap: () async {
-                //     DateTime? datetime = await showDatePicker(
-                //         context: context,
-                //         initialDate: DateTime.now(),
-                //         firstDate: DateTime(2000),
-                //         lastDate: DateTime(3000));
-                //
-                //     if (datetime != null) {
-                //       setState(() {
-                //         assignmentController.duedate.text =
-                //             DateFormat('yyyy-MM-dd').format(datetime);
-                //       });
-                //       Taskkk.setDueDate(datetime);
-                //     }
-                //   },
-                // ),
               ),
-              // SizedBox(height: 10),
-              // Padding(
-              //   padding: kDefaultPadding,
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       ElevatedButton.icon(
-              //         onPressed: () async {
-              //           final DateTime? datetime = await showDatePicker(
-              //             context: context,
-              //             initialDate: selectDate,
-              //             firstDate: DateTime(2000),
-              //             lastDate: DateTime(3000),
-              //           );
-              //           if (datetime != null) {
-              //             setState(
-              //               () {
-              //                 selectDate = datetime;
-              //               },
-              //             );
-              //           }
-              //         },
-              //         style: ElevatedButton.styleFrom(
-              //           primary: kPrimaryColor,
-              //           padding: EdgeInsets.all(10),
-              //         ),
-              //         label: Text(
-              //           "Due date",
-              //           style: TextStyle(fontSize: 17),
-              //         ),
-              //         icon: Icon(Icons.calendar_today_outlined),
-              //       ),
-              //       Text(
-              //         "${selectDate.month} - ${selectDate.day} - ${selectDate.year}",
-              //         style: TextStyle(
-              //           fontStyle: FontStyle.normal,
-              //           fontWeight: FontWeight.bold,
-              //           fontSize: 20,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              SizedBox(height: 10),
               Padding(
-                padding: kDefaultPadding,
+                padding: EdgeInsets.all(10),
                 child: FilePickerrrr(),
               ),
               SizedBox(
-                height: 360,
+                height: 300,
               ),
               Padding(
                 padding: kDefaultPadding,

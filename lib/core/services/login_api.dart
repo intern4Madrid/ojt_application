@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
 
 class Login {
   Future<http.Response> login(String email, String password) async {
@@ -21,6 +22,39 @@ class Login {
 
       print(response.body);
 
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+
+        final String firstname = responseData['firstname'] ?? '';
+        LoggedIn.setFirstName(firstname);
+
+        final String lastname = responseData['lastname'] ?? '';
+        LoggedIn.setLastName(lastname);
+
+        final String email = responseData['email'] ?? '';
+        LoggedIn.setEmail(email);
+
+        final String phone = responseData['phone'] ?? '';
+        LoggedIn.setPhone(phone);
+
+        final String password = responseData['password'] ?? '';
+        LoggedIn.setPassword(password);
+
+        final String confirm_password = responseData['confirm_password'] ?? '';
+        LoggedIn.setConfirmPassword(confirm_password);
+
+        final String userLevel = responseData['user_level'] ?? '';
+        LoggedIn.setUserLevel(userLevel);
+
+        print('FIRSTNAME : $firstname');
+        print('LASTNAME : $lastname');
+        print('EMAIL : $email');
+        print('PHONE : $phone');
+        print('PASSWORD : $password');
+        print('CONFIRM_PASSWORD : $confirm_password');
+        print('USER_LEVEL : $userLevel');
+      }
+
       return response;
     } catch (error) {
       print('Error during login request: $error');
@@ -28,6 +62,39 @@ class Login {
     }
   }
 }
+
+// if (response.statusCode == 200) {
+// final Map<String, dynamic> responseData = jsonDecode(response.body);
+//
+// final String firstname = responseData['firstName'];
+// LoggedIn.setFirstName(firstname);
+//
+// final String lastname = responseData['lastName'];
+// LoggedIn.setLastName(lastname);
+//
+// final String email = responseData['email'];
+// LoggedIn.setEmail(email);
+//
+// final String phone = responseData['phone'];
+// LoggedIn.setPhone(phone);
+//
+// final String password = responseData['password'];
+// LoggedIn.setPassword(password);
+//
+// final String confirm_password = responseData['confirm_password'];
+// LoggedIn.setConfirmPassword(confirm_password);
+//
+// final String userLevel = responseData['user_level'];
+// LoggedIn.setUserLevel(userLevel);
+//
+// print('FIRSTNAME : $firstname');
+// print('LASTNAME : $lastname');
+// print('EMAIL : $email');
+// print('PHONE : $phone');
+// print('PASSWORD : $password');
+// print('CONFIRM_PASSWORD : $confirm_password');
+// print('USER_LEVEL : $userLevel');
+// }
 
 // if (response.statusCode == 200) {
 //   final Map<String, dynamic> responseData = jsonDecode(response.body);

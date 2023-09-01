@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:ojt_app/screens/log_in_screens.dart';
+import 'package:ojt_app/w.screens/log_in_screens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

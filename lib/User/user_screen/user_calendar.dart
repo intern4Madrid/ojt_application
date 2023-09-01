@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:ojt_app/admin/admin_widgets/calendar_table_widgets.dart';
+import 'package:ojt_app/User/user_widgets/user_calendar_table.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/w.screens/log_in_screens.dart';
 import 'package:ojt_app/w.screens/notification_screens.dart';
 
-class Calendar extends StatefulWidget {
-  const Calendar({super.key});
+class UserCalendar extends StatefulWidget {
+  const UserCalendar({super.key});
 
   @override
-  State<Calendar> createState() => _CalendarState();
+  State<UserCalendar> createState() => _UserCalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _UserCalendarState extends State<UserCalendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class _CalendarState extends State<Calendar> {
         ),
       ),
       body: Container(
-        child: const CalendarWindow(),
+        child: const UserCalendarWindow(),
       ),
       drawer: NavigationDrawer(
         children: [
@@ -52,6 +52,14 @@ class _CalendarState extends State<Calendar> {
               Text(
                 "Name",
                 style: titleText,
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              ListTile(
+                leading: Icon(Icons.today_outlined),
+                title: Text("To-do"),
+                onTap: () {},
               ),
               Divider(
                 color: Colors.black,
