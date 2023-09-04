@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ojt_app/User/user_screen/user_calendar.dart';
 import 'package:ojt_app/User/user_screen/user_dtr_screens.dart';
 import 'package:ojt_app/User/user_screen/user_home_screen.dart';
-import 'package:ojt_app/theme.dart';
 
 class UserBottomNavigation extends StatefulWidget {
   const UserBottomNavigation({Key? key}) : super(key: key);
@@ -44,39 +43,52 @@ class _UserBottomNavigationState extends State<UserBottomNavigation> {
         controller: controller,
         children: _widgetOption,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kPrimaryColor,
-        elevation: 8,
-        currentIndex: _currentIndex,
-        selectedItemColor: Colors.white,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.task_outlined,
-              color: Colors.white,
-            ),
-            label: 'Task',
-            // backgroundColor: Colors.redAccent,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.red.shade900,
+              Colors.red,
+              Colors.red.shade400,
+              Colors.red,
+              Colors.red.shade900,
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.timer_outlined,
-              color: Colors.white,
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          currentIndex: _currentIndex,
+          selectedItemColor: Colors.white,
+          onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.task_outlined,
+                color: Colors.white,
+              ),
+              label: 'Task',
+              // backgroundColor: Colors.redAccent,
             ),
-            label: 'DTR',
-            // backgroundColor: Colors.redAccent,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.calendar_today_outlined,
-              color: Colors.white,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.timer_outlined,
+                color: Colors.white,
+              ),
+              label: 'DTR',
+              // backgroundColor: Colors.redAccent,
             ),
-            label: 'Calendar',
-            // backgroundColor: Colors.redAccent,
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.calendar_today_outlined,
+                color: Colors.white,
+              ),
+              label: 'Calendar',
+              // backgroundColor: Colors.redAccent,
+            ),
+          ],
+        ),
       ),
     );
   }

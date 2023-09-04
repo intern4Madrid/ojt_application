@@ -31,6 +31,19 @@ class _UserCalendarState extends State<UserCalendar> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red,
+                Colors.red.shade400,
+                Colors.red,
+                Colors.red.shade900,
+              ],
+            ),
+          ),
+        ),
         title: Row(
           children: [
             Padding(

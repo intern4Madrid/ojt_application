@@ -20,6 +20,19 @@ class _TaskUserState extends State<TaskUser> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red,
+                Colors.red.shade400,
+                Colors.red,
+                Colors.red.shade900,
+              ],
+            ),
+          ),
+        ),
       ),
       body: Padding(
         padding: kDefaultPadding,
@@ -29,13 +42,29 @@ class _TaskUserState extends State<TaskUser> {
             SizedBox(
               height: 20,
             ),
-            Text(
-              "Due date:",
-              style: TextStyle(
-                fontStyle: FontStyle.normal,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                Text(
+                  "Due date:",
+                  style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 190,
+                ),
+                Text(
+                  'Missing',
+                  style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ],
             ),
             SizedBox(width: 5),
             Text(
@@ -123,6 +152,7 @@ class _TaskUserState extends State<TaskUser> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       backgroundColor: Colors.transparent,
+                      elevation: 0,
                     ),
                     onPressed: () {},
                     child: Text(

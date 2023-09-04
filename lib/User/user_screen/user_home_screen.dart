@@ -29,9 +29,23 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   String email = LoggedIn.getEmail();
   @override
   Widget build(BuildContext context) {
+    // final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red,
+                Colors.red.shade400,
+                Colors.red,
+                Colors.red.shade900,
+              ],
+            ),
+          ),
+        ),
         title: Row(
           children: [
             Padding(
@@ -89,7 +103,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               Text(
                 email,
                 style: TextStyle(
-                  color: Colors.black,
                   fontStyle: FontStyle.normal,
                   fontSize: 15,
                 ),
@@ -124,6 +137,18 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   );
                 },
               ),
+              // Divider(
+              //   color: Colors.black,
+              // ),
+              // ListTile(
+              //   title: Text('Dark Mode'),
+              //   trailing: Switch(
+              //     value: themeProvider.isDarkMode,
+              //     onChanged: (value) {
+              //       themeProvider.toggleTheme();
+              //     },
+              //   ),
+              // ),
               Divider(
                 color: Colors.black,
               ),

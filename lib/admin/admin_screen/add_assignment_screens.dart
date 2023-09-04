@@ -146,33 +146,46 @@ class _AddAssignmentState extends State<AddAssignment> {
                   child: SizedBox(
                     height: 50,
                     width: 350,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.red.shade900,
+                            Colors.red,
+                            Colors.red.shade400,
+                          ],
                         ),
-                        backgroundColor: kPrimaryColor,
                       ),
-                      onPressed: () {
-                        Taskkk.getAssign();
-                        Taskkk.getDescription();
-                        Taskkk.getDueDate();
-
-                        print(Taskkk.getDueDate());
-                        print(Taskkk.getDescription());
-                        print(Taskkk.getAssign());
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BottomNavigation(),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                        );
-                      },
-                      child: Text(
-                        'Post',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                        ),
+                        onPressed: () {
+                          Taskkk.getAssign();
+                          Taskkk.getDescription();
+                          Taskkk.getDueDate();
+
+                          print(Taskkk.getDueDate());
+                          print(Taskkk.getDescription());
+                          print(Taskkk.getAssign());
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BottomNavigation(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Post',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),

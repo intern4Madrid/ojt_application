@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ojt_app/User/user_widgets/dtr_timein_timeout_widgets.dart';
+import 'package:ojt_app/User/user_widgets/user_timein_timeout.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
 import 'package:ojt_app/utils/pickImage.dart';
@@ -10,7 +10,7 @@ import 'package:ojt_app/w.screens/log_in_screens.dart';
 import 'package:ojt_app/w.screens/notification_screens.dart';
 
 class UserDTR extends StatefulWidget {
-  const UserDTR({super.key});
+  const UserDTR({Key? key}) : super(key: key);
 
   @override
   State<UserDTR> createState() => _UserDTRState();
@@ -31,6 +31,19 @@ class _UserDTRState extends State<UserDTR> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red,
+                Colors.red.shade400,
+                Colors.red,
+                Colors.red.shade900,
+              ],
+            ),
+          ),
+        ),
         title: Row(
           children: [
             Padding(
@@ -48,7 +61,7 @@ class _UserDTRState extends State<UserDTR> {
           ],
         ),
       ),
-      body: TimeInTimeOutPage(),
+      body: AddTimeIn_Out(),
       drawer: NavigationDrawer(
         children: [
           Column(
