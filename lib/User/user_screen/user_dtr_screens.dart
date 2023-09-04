@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/User/user_widgets/dtr_timein_timeout_widgets.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
 import 'package:ojt_app/w.screens/log_in_screens.dart';
 import 'package:ojt_app/w.screens/notification_screens.dart';
 
@@ -12,6 +13,7 @@ class UserDTR extends StatefulWidget {
 }
 
 class _UserDTRState extends State<UserDTR> {
+  String email = LoggedIn.getEmail();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +50,12 @@ class _UserDTRState extends State<UserDTR> {
                 height: 10,
               ),
               Text(
-                "Name",
-                style: titleText,
+                email,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 15,
+                ),
               ),
               Divider(
                 color: Colors.black,
