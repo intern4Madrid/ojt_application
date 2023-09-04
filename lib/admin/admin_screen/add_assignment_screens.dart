@@ -5,7 +5,6 @@ import 'package:ojt_app/admin/admin_widgets/file_picker.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/assignment_controller.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
-import 'package:ojt_app/widgets/primary_button_widgets.dart';
 
 class AddAssignment extends StatefulWidget {
   const AddAssignment({
@@ -143,24 +142,41 @@ class _AddAssignmentState extends State<AddAssignment> {
               ),
               Padding(
                 padding: kDefaultPadding,
-                child: GestureDetector(
-                    onTap: () {
-                      Taskkk.getAssign();
-                      Taskkk.getDescription();
-                      Taskkk.getDueDate();
-
-                      print(Taskkk.getDueDate());
-                      print(Taskkk.getDescription());
-                      print(Taskkk.getAssign());
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BottomNavigation(),
+                child: Center(
+                  child: SizedBox(
+                    height: 50,
+                    width: 350,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                      );
-                    },
-                    child: PrimaryButton(buttonText: "Post Assignment")),
+                        backgroundColor: kPrimaryColor,
+                      ),
+                      onPressed: () {
+                        Taskkk.getAssign();
+                        Taskkk.getDescription();
+                        Taskkk.getDueDate();
+
+                        print(Taskkk.getDueDate());
+                        print(Taskkk.getDescription());
+                        print(Taskkk.getAssign());
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BottomNavigation(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Post',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

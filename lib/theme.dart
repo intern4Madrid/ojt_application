@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFFB71C1C);
-const kSecondaryColor = Color(0xFF59706F);
+const kPrimaryColor = Color(0xFFE53935);
+const kSecondaryColor = Color(0xDD000000);
 const kDarkGreyColor = Color(0xFFA8A8A8);
 const kWhiteColor = Color(0xFFFFFFFF);
 const kZambeziColor = Color(0xFFE53935);
@@ -19,4 +19,3 @@ TextStyle textButton = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w700,
 );
-

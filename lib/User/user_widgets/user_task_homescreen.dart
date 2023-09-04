@@ -48,11 +48,11 @@ class _UserTaskState extends State<UserTask> {
                       Row(
                         children: [
                           Text(
-                            "Assignmet title:",
+                            "Assignment title:",
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                           SizedBox(width: 5),
@@ -69,11 +69,11 @@ class _UserTaskState extends State<UserTask> {
                       Row(
                         children: [
                           Text(
-                            "Descrition:",
+                            "Description:",
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                           SizedBox(width: 5),
@@ -94,7 +94,7 @@ class _UserTaskState extends State<UserTask> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                           SizedBox(

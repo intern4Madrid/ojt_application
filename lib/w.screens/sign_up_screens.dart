@@ -84,10 +84,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Firstname',
                   labelStyle: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                  hintText: 'Enter your firstname',
+                  hintStyle: TextStyle(
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -103,10 +103,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Lastname',
                   labelStyle: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                  hintText: 'Enter your lastname',
+                  hintStyle: TextStyle(
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -122,10 +122,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                  hintText: 'Enter your email',
+                  hintStyle: TextStyle(
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -141,10 +141,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Phone',
                   labelStyle: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                  hintText: 'Enter your phone',
+                  hintStyle: TextStyle(
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -162,10 +162,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: InputDecoration(
                   labelText: 'Password',
                   labelStyle: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                  hintText: 'Enter your password',
+                  hintStyle: TextStyle(
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   border: const OutlineInputBorder(),
                   suffixIcon: InkWell(
                     onTap: () {
@@ -191,10 +191,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
                   labelStyle: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                  hintText: 'Confirm your password',
+                  hintStyle: TextStyle(
+                      fontStyle: FontStyle.italic, letterSpacing: 1.5),
                   border: const OutlineInputBorder(),
                   suffixIcon: InkWell(
                     onTap: () {
@@ -235,23 +235,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           items: const [
                             DropdownMenuItem(
-                                value: '--Select an option--',
-                                child: Center(
-                                    child: Text('--Select an option--'))),
+                              value: '--Select an option--',
+                              child: Center(
+                                child: Text(
+                                  '--Select an option--',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontStyle: FontStyle.italic,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
+                              ),
+                            ),
                             DropdownMenuItem(
-                                value: 'User',
-                                child: Center(
-                                    child: Text(
+                              value: 'User',
+                              child: Center(
+                                child: Text(
                                   'User',
-                                  style: TextStyle(color: Colors.black),
-                                ))),
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontStyle: FontStyle.italic,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
+                              ),
+                            ),
                             DropdownMenuItem(
-                                value: 'Admin',
-                                child: Center(
-                                    child: Text(
+                              value: 'Admin',
+                              child: Center(
+                                child: Text(
                                   'Admin',
-                                  style: TextStyle(color: Colors.black),
-                                )))
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontStyle: FontStyle.italic,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

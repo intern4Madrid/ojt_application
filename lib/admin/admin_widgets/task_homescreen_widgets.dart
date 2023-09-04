@@ -48,7 +48,7 @@ class _TaskState extends State<Task> {
                       Row(
                         children: [
                           Text(
-                            "Assignmet title:",
+                            "Assignment title:",
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class _TaskState extends State<Task> {
                       Row(
                         children: [
                           Text(
-                            "Descrition:",
+                            "Description:",
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,

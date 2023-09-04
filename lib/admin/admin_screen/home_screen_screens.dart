@@ -1,8 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ojt_app/admin/admin_screen/add_assignment_screens.dart';
 import 'package:ojt_app/admin/admin_widgets/task_homescreen_widgets.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
+import 'package:ojt_app/utils/pickImage.dart';
 import 'package:ojt_app/w.screens/log_in_screens.dart';
 import 'package:ojt_app/w.screens/notification_screens.dart';
 
@@ -14,6 +18,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Uint8List? _image;
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
+
   String email = LoggedIn.getEmail();
   @override
   Widget build(BuildContext context) {
@@ -42,10 +54,34 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Column(
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 60,
-                backgroundImage: AssetImage("images/avatar_icon.png"),
+              Stack(
+                children: [
+                  Positioned(
+                    child: _image != null
+                        ? CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Colors.white,
+                            backgroundImage: MemoryImage(_image!),
+                          )
+                        : CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Colors.white,
+                            backgroundImage:
+                                AssetImage("images/avatar_icon.png"),
+                          ),
+                  ),
+                  Positioned(
+                    child: IconButton(
+                      onPressed: selectImage,
+                      icon: Icon(
+                        Icons.add_a_photo_outlined,
+                        color: Colors.pink,
+                      ),
+                    ),
+                    bottom: -10,
+                    left: 55,
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
@@ -126,18 +162,30 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton.extended(
-            elevation: 8,
-            backgroundColor: kPrimaryColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddAssignment(),
-                ),
-              );
-            },
-            label: Text("Add assignmet"),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.red.shade900,
+                  Colors.red,
+                  Colors.red.shade400,
+                ],
+              ),
+            ),
+            child: FloatingActionButton.extended(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddAssignment(),
+                  ),
+                );
+              },
+              label: Text("Add assignmet"),
+            ),
           ),
         ],
       ),

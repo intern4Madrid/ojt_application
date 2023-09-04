@@ -1,7 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ojt_app/User/user_widgets/dtr_timein_timeout_widgets.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
+import 'package:ojt_app/utils/pickImage.dart';
 import 'package:ojt_app/w.screens/log_in_screens.dart';
 import 'package:ojt_app/w.screens/notification_screens.dart';
 
@@ -13,6 +17,14 @@ class UserDTR extends StatefulWidget {
 }
 
 class _UserDTRState extends State<UserDTR> {
+  Uint8List? _image;
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
+
   String email = LoggedIn.getEmail();
   @override
   Widget build(BuildContext context) {
@@ -41,10 +53,34 @@ class _UserDTRState extends State<UserDTR> {
         children: [
           Column(
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 60,
-                backgroundImage: AssetImage("images/avatar_icon.png"),
+              Stack(
+                children: [
+                  Positioned(
+                    child: _image != null
+                        ? CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Colors.white,
+                            backgroundImage: MemoryImage(_image!),
+                          )
+                        : CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Colors.white,
+                            backgroundImage:
+                                AssetImage("images/avatar_icon.png"),
+                          ),
+                  ),
+                  Positioned(
+                    child: IconButton(
+                      onPressed: selectImage,
+                      icon: Icon(
+                        Icons.add_a_photo_outlined,
+                        color: Colors.pink,
+                      ),
+                    ),
+                    bottom: -10,
+                    left: 55,
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,

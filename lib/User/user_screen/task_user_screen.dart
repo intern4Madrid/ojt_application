@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ojt_app/admin/admin_widgets/file_picker.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
 
@@ -92,6 +93,45 @@ class _TaskUserState extends State<TaskUser> {
               "Attachments:",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
+              ),
+            ),
+            SizedBox(
+              height: 200,
+            ),
+            FilePickerrrr(),
+            SizedBox(
+              height: 100,
+            ),
+            Center(
+              child: SizedBox(
+                height: 50,
+                width: 350,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.red.shade900,
+                        Colors.red,
+                        Colors.red.shade400,
+                      ],
+                    ),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      backgroundColor: Colors.transparent,
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Submit',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

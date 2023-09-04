@@ -190,11 +190,23 @@ class _CalendarWindowState extends State<CalendarWindow> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        elevation: 8,
-        backgroundColor: kPrimaryColor,
-        onPressed: () => _showAddEventDialog(),
-        label: Text('Add event'),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            colors: [
+              Colors.red.shade900,
+              Colors.red,
+              Colors.red.shade400,
+            ],
+          ),
+        ),
+        child: FloatingActionButton.extended(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          onPressed: () => _showAddEventDialog(),
+          label: Text('Add event'),
+        ),
       ),
     );
   }
