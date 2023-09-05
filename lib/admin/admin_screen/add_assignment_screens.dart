@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:ojt_app/admin/admin_widgets/bottom_navigation_bar_widgets.dart';
 import 'package:ojt_app/admin/admin_widgets/file_picker.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/assignment_controller.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
+import 'package:ojt_app/widgets/add_assignment_post_button.dart';
 
 class AddAssignment extends StatefulWidget {
   const AddAssignment({
@@ -19,6 +19,18 @@ AssignmentController assignmentController = AssignmentController();
 
 class _AddAssignmentState extends State<AddAssignment> {
   DateTime selectDate = DateTime.now();
+  List<String> _emailAddresses = [];
+
+  void _addEmails() {
+    final inputText = assignmentController.email.text.trim();
+    final emails = inputText.split(RegExp(r'[;,]'));
+
+    setState(() {
+      _emailAddresses.addAll(emails.where((email) => email.isNotEmpty));
+      assignmentController.email.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +56,7 @@ class _AddAssignmentState extends State<AddAssignment> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 5),
           child: Column(
             children: [
               Padding(
@@ -135,65 +147,80 @@ class _AddAssignmentState extends State<AddAssignment> {
               ),
               Padding(
                 padding: EdgeInsets.all(10),
-                child: FilePickerrrr(),
-              ),
-              SizedBox(
-                height: 300,
-              ),
-              Padding(
-                padding: kDefaultPadding,
-                child: Center(
-                  child: SizedBox(
-                    height: 50,
-                    width: 350,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.red.shade900,
-                            Colors.red,
-                            Colors.red.shade400,
-                          ],
-                        ),
-                      ),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                        ),
-                        onPressed: () {
-                          Taskkk.getAssign();
-                          Taskkk.getDescription();
-                          Taskkk.getDueDate();
-
-                          print(Taskkk.getDueDate());
-                          print(Taskkk.getDescription());
-                          print(Taskkk.getAssign());
-
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BottomNavigation(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Post',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                child: TextFormField(
+                  controller: assignmentController.email,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: Colors.black,
+                    ),
+                    labelText: 'Enter Emails (separated by , or ;)',
+                    labelStyle: const TextStyle(
+                        fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                    hintText: 'Enter Emails',
+                    hintStyle: const TextStyle(fontStyle: FontStyle.italic),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.red.shade900,
+                      Colors.red,
+                      Colors.red.shade400,
+                    ],
+                  ),
+                ),
+                child: SizedBox(
+                  height: 40,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                    ),
+                    onPressed: _addEmails,
+                    child: Text('Add Emails'),
+                  ),
+                ),
+              ),
+              SizedBox(height: 5.0),
+              Text('Emails added:'),
+              Column(
+                children: [
+                  Wrap(
+                    children: _emailAddresses.map((email) {
+                      return Chip(
+                        backgroundColor: Colors.red.shade100,
+                        label: Text(email),
+                        onDeleted: () {
+                          setState(() {
+                            _emailAddresses.remove(email);
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: FilePickerrrr(),
+              ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom: 20),
+        child: PostButton(),
       ),
     );
   }

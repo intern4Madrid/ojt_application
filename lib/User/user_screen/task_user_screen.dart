@@ -20,19 +20,6 @@ class _TaskUserState extends State<TaskUser> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.red.shade900,
-                Colors.red,
-                Colors.red.shade400,
-                Colors.red,
-                Colors.red.shade900,
-              ],
-            ),
-          ),
-        ),
       ),
       body: Padding(
         padding: kDefaultPadding,

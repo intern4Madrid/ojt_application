@@ -184,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               },
-              label: Text("Add assignmet"),
+              label: Text("Add assignment"),
             ),
           ),
         ],

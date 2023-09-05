@@ -1,7 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/admin/admin_widgets/file_page.dart';
-import 'package:ojt_app/theme.dart';
 import 'package:open_file/open_file.dart';
 
 class FilePickerrrr extends StatefulWidget {
@@ -20,13 +19,23 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade900,
+                Colors.red,
+                Colors.red.shade400,
+              ],
+            ),
+          ),
           child: ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
+              elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              backgroundColor: kPrimaryColor,
-              padding: EdgeInsets.all(10),
+              backgroundColor: Colors.transparent,
             ),
             onPressed: () async {
               final result = await FilePicker.platform.pickFiles(

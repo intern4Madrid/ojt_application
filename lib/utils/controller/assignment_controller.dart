@@ -5,4 +5,5 @@ class AssignmentController extends ChangeNotifier {
   TextEditingController description = TextEditingController();
   TextEditingController duedate = TextEditingController();
   TextEditingController uploadfile = TextEditingController();
+  TextEditingController email = TextEditingController();
 }
