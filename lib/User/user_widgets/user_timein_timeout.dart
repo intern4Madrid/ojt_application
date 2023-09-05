@@ -20,6 +20,16 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
             columns: [
               DataColumn(
                 label: Text(
+                  "Date",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ),
+              DataColumn(
+                label: Text(
                   "Time In",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -58,10 +68,29 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
                   ),
                 ),
               ),
+              DataColumn(
+                label: Text(
+                  "",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ),
             ],
             rows: [
               DataRow(
                 cells: [
+                  DataCell(
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Date',
+                        labelStyle: TextStyle(
+                            fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                      ),
+                    ),
+                  ),
                   DataCell(
                     TextFormField(
                       decoration: InputDecoration(
@@ -91,6 +120,29 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
                   ),
                   DataCell(
                     Text('Remarks'),
+                  ),
+                  DataCell(
+                    Container(
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.red.shade600,
+                            Colors.red,
+                            Colors.red.shade400,
+                          ],
+                        ),
+                      ),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                        ),
+                        onPressed: () {},
+                        child: Text("Submit"),
+                      ),
+                    ),
                   ),
                 ],
               ),

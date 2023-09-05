@@ -6,7 +6,11 @@ import 'package:open_file/open_file.dart';
 class FilePages extends StatefulWidget {
   final List<PlatformFile> files;
   final ValueChanged<PlatformFile> onOpenedFile;
-  const FilePages({super.key, required this.files, required this.onOpenedFile});
+  const FilePages({
+    super.key,
+    required this.files,
+    required this.onOpenedFile,
+  });
 
   @override
   State<FilePages> createState() => _FilePagesState();

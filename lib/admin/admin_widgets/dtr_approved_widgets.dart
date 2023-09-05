@@ -31,6 +31,16 @@ class _DTRApprovalState extends State<DTRApproval> {
               ),
               DataColumn(
                 label: Text(
+                  "Date",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ),
+              DataColumn(
+                label: Text(
                   "Time In",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -65,6 +75,9 @@ class _DTRApprovalState extends State<DTRApproval> {
                 cells: [
                   DataCell(
                     Text("John Eric Madrid"),
+                  ),
+                  DataCell(
+                    Text("Date:"),
                   ),
                   DataCell(
                     Text("In:"),
