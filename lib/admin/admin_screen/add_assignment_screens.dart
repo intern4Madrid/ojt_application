@@ -4,7 +4,7 @@ import 'package:ojt_app/admin/admin_widgets/add_assignment_post_button.dart';
 import 'package:ojt_app/admin/admin_widgets/file_picker.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/assignment_controller.dart';
-import 'package:ojt_app/utils/getter_setter/file_opener.dart';
+import 'package:ojt_app/utils/getter_setter/admin_file_opener.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +35,7 @@ class _AddAssignmentState extends State<AddAssignment> {
 
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<FileOpener>(context);
+    final prov = Provider.of<AdminFileOpener>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -212,18 +212,21 @@ class _AddAssignmentState extends State<AddAssignment> {
               ),
             ),
             SizedBox(height: 8.0),
-            Wrap(
-              children: _emailAddresses.map((email) {
-                return Chip(
-                  backgroundColor: Colors.red.shade100,
-                  label: Text(email),
-                  onDeleted: () {
-                    setState(() {
-                      _emailAddresses.remove(email);
-                    });
-                  },
-                );
-              }).toList(),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Wrap(
+                children: _emailAddresses.map((email) {
+                  return Chip(
+                    backgroundColor: Colors.red.shade100,
+                    label: Text(email),
+                    onDeleted: () {
+                      setState(() {
+                        _emailAddresses.remove(email);
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
             ),
             SizedBox(
               height: 10,

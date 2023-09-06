@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:ojt_app/theme.dart';
 import 'package:open_file/open_file.dart';
 
 class FilePagesUser extends StatefulWidget {
@@ -55,22 +54,23 @@ class _FilePagesUserState extends State<FilePagesUser> {
           children: [
             Expanded(
               child: Container(
-                  alignment: Alignment.center,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Image.file(File('${file.path}'))
-                  /*Text(
-                  '.$extension',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),*/
-                  ),
+                alignment: Alignment.center,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: extension != 'pdf' ? Colors.transparent : Colors.red,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: extension != 'pdf'
+                    ? Image.file(File('${file.path}'))
+                    : Text(
+                        '.$extension',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+              ),
             ),
             SizedBox(height: 8),
             Text(

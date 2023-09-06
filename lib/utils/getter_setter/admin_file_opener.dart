@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FileOpener extends ChangeNotifier {
+class AdminFileOpener extends ChangeNotifier {
   bool _isAdded = false;
 
   bool get isAdded => _isAdded;

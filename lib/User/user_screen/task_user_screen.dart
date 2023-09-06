@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/User/user_widgets/user_filepicker.dart';
+import 'package:ojt_app/User/user_widgets/user_submit_button.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
 import 'package:provider/provider.dart';
 
-import '../../utils/getter_setter/file_opener.dart';
+import '../../utils/getter_setter/user_file_opener.dart';
 
 class TaskUser extends StatefulWidget {
   const TaskUser({super.key});
@@ -20,7 +21,7 @@ class _TaskUserState extends State<TaskUser> {
 
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<FileOpener>(context);
+    final prov = Provider.of<UserFileOpener>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -119,7 +120,10 @@ class _TaskUserState extends State<TaskUser> {
               SizedBox(
                 height: 100,
               ),
-              UserFilePickerrrr(),
+              Padding(
+                padding: const EdgeInsets.only(left: 1),
+                child: UserFilePickerrrr(),
+              ),
               !prov.isAdded
                   ? Container()
                   : Container(
@@ -128,42 +132,13 @@ class _TaskUserState extends State<TaskUser> {
               SizedBox(
                 height: 50,
               ),
-              Center(
-                child: SizedBox(
-                  height: 50,
-                  width: 350,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.red.shade900,
-                          Colors.red,
-                          Colors.red.shade400,
-                        ],
-                      ),
-                    ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Submit',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        child: SubmitButton(),
       ),
     );
   }

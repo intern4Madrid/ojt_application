@@ -1,7 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/admin/admin_widgets/file_page.dart';
-import 'package:ojt_app/utils/getter_setter/file_opener.dart';
+import 'package:ojt_app/utils/getter_setter/admin_file_opener.dart';
 import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
   PlatformFile? file;
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<FileOpener>(context);
+    final prov = Provider.of<AdminFileOpener>(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -1,9 +1,10 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ojt_app/User/user_widgets/user_filepage.dart';
-import 'package:ojt_app/utils/getter_setter/file_opener.dart';
 import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
+
+import '../../utils/getter_setter/user_file_opener.dart';
 
 class UserFilePickerrrr extends StatefulWidget {
   const UserFilePickerrrr({super.key});
@@ -16,7 +17,7 @@ class _UserFilePickerrrrState extends State<UserFilePickerrrr> {
   PlatformFile? file;
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<FileOpener>(context);
+    final prov = Provider.of<UserFileOpener>(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -68,7 +69,6 @@ class _UserFilePickerrrrState extends State<UserFilePickerrrr> {
       prov.isAdded = true;
       prov.widget = FilePagesUser(files: files, onOpenedFile: openFile);
     });
-
     // Navigator.of(context).push(
     //   MaterialPageRoute(
     //     builder: (context) => FilePages(

@@ -94,18 +94,18 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
                   DataCell(
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'In',
+                        labelText: '00:00 AM',
                         labelStyle: TextStyle(
-                            fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                            fontStyle: FontStyle.italic, letterSpacing: .1),
                       ),
                     ),
                   ),
                   DataCell(
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Out',
+                        labelText: '00:00 PM',
                         labelStyle: TextStyle(
-                            fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                            fontStyle: FontStyle.italic, letterSpacing: .1),
                       ),
                     ),
                   ),

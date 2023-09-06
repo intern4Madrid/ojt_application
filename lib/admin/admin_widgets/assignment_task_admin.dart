@@ -14,6 +14,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
   String description = Taskkk.getDescription();
   String assign = Taskkk.getAssign();
   String duedate = Taskkk.getDueDate();
+  String uploadfile = Taskkk.getUploadFile();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
               "Due date:",
               style: TextStyle(
                 fontStyle: FontStyle.normal,
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -39,7 +40,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
               duedate,
               style: TextStyle(
                 fontStyle: FontStyle.normal,
-                fontSize: 15,
+                fontSize: 18,
               ),
             ),
             SizedBox(
@@ -57,7 +58,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
               assign,
               style: TextStyle(
                 fontStyle: FontStyle.normal,
-                fontSize: 15,
+                fontSize: 18,
               ),
             ),
             SizedBox(
@@ -69,6 +70,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
             Text(
               "Description:",
               style: TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -77,7 +79,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
               description,
               style: TextStyle(
                 fontStyle: FontStyle.normal,
-                fontSize: 15,
+                fontSize: 18,
               ),
             ),
             SizedBox(
@@ -89,9 +91,17 @@ class _AssigmentTaskState extends State<AssigmentTask> {
             Text(
               "Attachments:",
               style: TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
             ),
+            Text(
+              uploadfile,
+              style: TextStyle(
+                fontStyle: FontStyle.normal,
+                fontSize: 18,
+              ),
+            )
           ],
         ),
       ),
