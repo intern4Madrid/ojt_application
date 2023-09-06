@@ -19,10 +19,12 @@ class PostButton extends StatelessWidget {
         Taskkk.getAssign();
         Taskkk.getDescription();
         Taskkk.getDueDate();
+        Taskkk.getUploadFile();
 
         print(Taskkk.getDueDate());
         print(Taskkk.getDescription());
         print(Taskkk.getAssign());
+        print(Taskkk.getUploadFile());
 
         Navigator.push(
           context,

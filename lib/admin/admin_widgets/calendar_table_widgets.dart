@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/controller/event_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWindow extends StatefulWidget {
@@ -20,8 +21,7 @@ class _CalendarWindowState extends State<CalendarWindow> {
 
   Map<String, List> mySelectedEvents = {};
 
-  final titleController = TextEditingController();
-  final descpController = TextEditingController();
+  EventController eventController = EventController();
 
   List _listOfDayEvents(DateTime dateTime) {
     if (mySelectedEvents[DateFormat('yyyy-MM-dd').format(dateTime)] != null) {
@@ -44,14 +44,14 @@ class _CalendarWindowState extends State<CalendarWindow> {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-              controller: titleController,
+              controller: eventController.titleController,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Title',
               ),
             ),
             TextField(
-              controller: descpController,
+              controller: eventController.descpController,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Description',
@@ -73,8 +73,8 @@ class _CalendarWindowState extends State<CalendarWindow> {
               style: TextStyle(color: kPrimaryColor),
             ),
             onPressed: () {
-              if (titleController.text.isEmpty &&
-                  descpController.text.isEmpty) {
+              if (eventController.titleController.text.isEmpty &&
+                  eventController.descpController.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
@@ -85,8 +85,8 @@ class _CalendarWindowState extends State<CalendarWindow> {
                 );
                 return;
               } else {
-                print(titleController.text);
-                print(descpController.text);
+                print(eventController.titleController.text);
+                print(eventController.descpController.text);
 
                 setState(() {
                   if (mySelectedEvents[
@@ -95,15 +95,15 @@ class _CalendarWindowState extends State<CalendarWindow> {
                     mySelectedEvents[
                             DateFormat('yyyy-MM-dd').format(_selectedDate!)]
                         ?.add({
-                      "eventTitle": titleController.text,
-                      "eventDescp": descpController.text,
+                      "eventTitle": eventController.titleController.text,
+                      "eventDescp": eventController.descpController.text,
                     });
                   } else {
                     mySelectedEvents[
                         DateFormat('yyyy-MM-dd').format(_selectedDate!)] = [
                       {
-                        "eventTitle": titleController.text,
-                        "eventDescp": descpController.text,
+                        "eventTitle": eventController.titleController.text,
+                        "eventDescp": eventController.descpController.text,
                       }
                     ];
                   }
@@ -111,8 +111,8 @@ class _CalendarWindowState extends State<CalendarWindow> {
 
                 print(
                     "New event for backend developer ${json.encode(mySelectedEvents)}");
-                titleController.clear();
-                descpController.clear();
+                eventController.titleController.clear();
+                eventController.descpController.clear();
                 Navigator.pop(context);
                 return;
               }
@@ -175,15 +175,32 @@ class _CalendarWindowState extends State<CalendarWindow> {
               ..._listOfDayEvents(_selectedDate!).map(
                 (myEvents) => SingleChildScrollView(
                   child: ListTile(
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.delete_forever_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
                     leading: Icon(
                       Icons.event_note_outlined,
                       color: kPrimaryColor,
                     ),
                     title: Padding(
                       padding: EdgeInsets.only(bottom: 8.0),
-                      child: Text('Event Title: ${myEvents['eventTitle']}'),
+                      child: Text(
+                        'Event Title: ${myEvents['eventTitle']}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                    subtitle: Text('Description:   ${myEvents['eventDescp']}'),
+                    subtitle: Text(
+                      'Description:   ${myEvents['eventDescp']}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
               ),

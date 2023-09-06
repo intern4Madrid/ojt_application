@@ -150,53 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     textInputAction: TextInputAction.next,
                   ),
-                  // child: TextFormField(
-                  //   obscureText: _isHiddenPassword,
-                  //   textInputAction: TextInputAction.next,
-                  //   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  //   controller: _passwordController,
-                  //   decoration: InputDecoration(
-                  //     labelText: 'Password',
-                  //     labelStyle: TextStyle(
-                  //         fontStyle: FontStyle.italic, letterSpacing: 1.5),
-                  //     hintText: 'Enter your password',
-                  //     hintStyle: TextStyle(
-                  //         fontStyle: FontStyle.italic, letterSpacing: 1.5),
-                  //     border: const OutlineInputBorder(),
-                  //     suffixIcon: InkWell(
-                  //       onTap: () {
-                  //         setState(() {
-                  //           _isHiddenPassword = !_isHiddenPassword;
-                  //         });
-                  //       },
-                  //       child: const Icon(Icons.visibility),
-                  //     ),
-                  //     prefixIcon: const Icon(Icons.fingerprint_outlined),
-                  //   ),
-                  // ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => ResetPasswordScreen(),
-                //       ),
-                //     );
-                //   },
-                //   child: Text(
-                //     "Forgot password?",
-                //     style: TextStyle(
-                //       color: kZambeziColor,
-                //       fontSize: 14,
-                //       decoration: TextDecoration.underline,
-                //       decorationThickness: 1,
-                //     ),
-                //   ),
-                // ),
                 Center(
                   child: SizedBox(
                     height: 50,
@@ -254,14 +211,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 );
                               }
-
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => BottomNavigation(),
-                              //   ),
-                              // );
-                              // print('---PASOK2---');
                             } else {
                               showDialog(
                                 context: context,
