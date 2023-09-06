@@ -32,7 +32,7 @@ class _TaskState extends State<Task> {
                 );
               },
               child: Container(
-                height: 100,
+                height: 115,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: kPrimaryColor,
@@ -52,7 +52,7 @@ class _TaskState extends State<Task> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(width: 5),
@@ -60,7 +60,7 @@ class _TaskState extends State<Task> {
                             assign,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                         ],
@@ -73,7 +73,7 @@ class _TaskState extends State<Task> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(width: 5),
@@ -81,7 +81,7 @@ class _TaskState extends State<Task> {
                             description,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                         ],
@@ -94,7 +94,7 @@ class _TaskState extends State<Task> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(
@@ -104,7 +104,7 @@ class _TaskState extends State<Task> {
                             duedate,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                         ],

@@ -32,7 +32,7 @@ class _UserTaskState extends State<UserTask> {
                 );
               },
               child: Container(
-                height: 100,
+                height: 115,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: kPrimaryColor,
@@ -52,7 +52,7 @@ class _UserTaskState extends State<UserTask> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(width: 5),
@@ -60,7 +60,7 @@ class _UserTaskState extends State<UserTask> {
                             assign,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                         ],
@@ -73,7 +73,7 @@ class _UserTaskState extends State<UserTask> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(width: 5),
@@ -81,7 +81,7 @@ class _UserTaskState extends State<UserTask> {
                             description,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                         ],
@@ -94,7 +94,7 @@ class _UserTaskState extends State<UserTask> {
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(
@@ -104,7 +104,7 @@ class _UserTaskState extends State<UserTask> {
                             duedate,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
-                              fontSize: 15,
+                              fontSize: 20,
                             ),
                           ),
                         ],

@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:open_file/open_file.dart';
 
-class FilePages extends StatefulWidget {
+class FilePagesUser extends StatefulWidget {
   final List<PlatformFile> files;
   final ValueChanged<PlatformFile> onOpenedFile;
-  const FilePages({
+  const FilePagesUser({
     super.key,
     required this.files,
     required this.onOpenedFile,
   });
 
   @override
-  State<FilePages> createState() => _FilePagesState();
+  State<FilePagesUser> createState() => _FilePagesUserState();
 }
 
-class _FilePagesState extends State<FilePages> {
+class _FilePagesUserState extends State<FilePagesUser> {
   @override
   Widget build(BuildContext context) {
     return Center(

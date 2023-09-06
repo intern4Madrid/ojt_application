@@ -1,18 +1,18 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:ojt_app/admin/admin_widgets/file_page.dart';
+import 'package:ojt_app/User/user_widgets/user_filepage.dart';
 import 'package:ojt_app/utils/getter_setter/file_opener.dart';
 import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
 
-class FilePickerrrr extends StatefulWidget {
-  const FilePickerrrr({super.key});
+class UserFilePickerrrr extends StatefulWidget {
+  const UserFilePickerrrr({super.key});
 
   @override
-  State<FilePickerrrr> createState() => _FilePickerrrrState();
+  State<UserFilePickerrrr> createState() => _UserFilePickerrrrState();
 }
 
-class _FilePickerrrrState extends State<FilePickerrrr> {
+class _UserFilePickerrrrState extends State<UserFilePickerrrr> {
   PlatformFile? file;
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _FilePickerrrrState extends State<FilePickerrrr> {
   void openFiles(List<PlatformFile> files, prov) {
     setState(() {
       prov.isAdded = true;
-      prov.widget = FilePages(files: files, onOpenedFile: openFile);
+      prov.widget = FilePagesUser(files: files, onOpenedFile: openFile);
     });
 
     // Navigator.of(context).push(
