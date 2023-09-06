@@ -6,7 +6,7 @@ import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
 class Login {
   Future<http.Response> login(String email, String password) async {
     try {
-      String url = 'http://192.168.0.131:5000/api/login';
+      String url = 'http://192.168.0.132:5000/api/login';
       final http.Response response = await http.post(
         Uri.parse(url),
         headers: <String, String>{
