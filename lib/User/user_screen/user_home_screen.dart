@@ -76,7 +76,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                       onPressed: selectImage,
                       icon: Icon(
                         Icons.add_a_photo_outlined,
-                        color: Colors.pink,
+                        color: Colors.red.shade900,
                       ),
                     ),
                     bottom: -10,
@@ -98,7 +98,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 color: Colors.black,
               ),
               ListTile(
-                leading: Icon(Icons.today_outlined),
+                leading: Icon(
+                  Icons.today_outlined,
+                  color: Colors.black,
+                ),
                 title: Text("To-do"),
                 onTap: () {
                   Navigator.push(
@@ -113,7 +116,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 color: Colors.black,
               ),
               ListTile(
-                leading: Icon(Icons.notifications_outlined),
+                leading: Icon(
+                  Icons.notifications_outlined,
+                  color: Colors.black,
+                ),
                 title: Text("Notifications"),
                 onTap: () {
                   Navigator.push(
@@ -140,7 +146,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 color: Colors.black,
               ),
               ListTile(
-                leading: Icon(Icons.logout_outlined),
+                leading: Icon(
+                  Icons.logout_outlined,
+                  color: Colors.black,
+                ),
                 title: Text("Sign out"),
                 onTap: () async {
                   showDialog(

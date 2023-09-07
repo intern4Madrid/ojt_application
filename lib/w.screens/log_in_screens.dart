@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 100.0),
+                  padding: EdgeInsets.only(top: 30.0),
                   child: Center(
                     child: Container(
                       width: 300,
@@ -258,6 +258,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       decorationThickness: 1,
                     ),
                   ),
+                ),
+                SizedBox(height: 160),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.copyright,
+                      size: 15,
+                    ),
+                    SizedBox(width: 2),
+                    Text(
+                      'All Rights Reserved',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

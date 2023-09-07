@@ -212,7 +212,10 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           onPressed: () => _showAddEventDialog(),
-          label: Text('Add event'),
+          label: Text(
+            'Add event',
+            style: TextStyle(fontSize: 18),
+          ),
         ),
       ),
     );

@@ -157,7 +157,7 @@ class _DTRApprovalState extends State<DTRApproval> {
                             child: Text(
                               "Pending",
                               style: TextStyle(
-                                color: Colors.grey,
+                                color: Colors.grey.shade900,
                               ),
                             ),
                           ),
@@ -168,7 +168,7 @@ class _DTRApprovalState extends State<DTRApproval> {
                             child: Text(
                               "Approved",
                               style: TextStyle(
-                                color: Colors.green,
+                                color: Colors.green.shade900,
                               ),
                             ),
                           ),

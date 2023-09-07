@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: selectImage,
                       icon: Icon(
                         Icons.add_a_photo_outlined,
-                        color: Colors.pink,
+                        color: Colors.red.shade900,
                       ),
                     ),
                     bottom: -10,

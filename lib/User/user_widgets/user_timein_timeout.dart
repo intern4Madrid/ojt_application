@@ -25,53 +25,93 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
           child: DataTable(
             columns: [
               DataColumn(
-                label: Text(
-                  "Date",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.date_range,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Date",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Time In",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.timer_rounded,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Time In",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Time Out",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.timer_rounded,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Time Out",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Total",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.timer_rounded,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Total Time",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Remarks",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.approval,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Remarks",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
@@ -125,7 +165,13 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
                     ),
                   ),
                   DataCell(
-                    Text('Remarks'),
+                    Text(
+                      'Remarks',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
                   DataCell(
                     Container(
@@ -168,8 +214,8 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
           ),
         ),
         child: SizedBox(
-          height: 70,
-          width: 70,
+          height: 60,
+          width: 60,
           child: FloatingActionButton.extended(
             onPressed: () {
               Navigator.push(
@@ -181,7 +227,10 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
             },
             backgroundColor: Colors.transparent,
             elevation: 0,
-            label: Icon(Icons.add_outlined),
+            label: Icon(
+              Icons.add_outlined,
+              size: 35,
+            ),
           ),
         ),
       ),
