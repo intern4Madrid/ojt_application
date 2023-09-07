@@ -175,6 +175,13 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
               ..._listOfDayEvents(_selectedDate!).map(
                 (myEvents) => SingleChildScrollView(
                   child: ListTile(
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.delete_forever_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
                     leading: Icon(
                       Icons.event_note_outlined,
                       color: kPrimaryColor,

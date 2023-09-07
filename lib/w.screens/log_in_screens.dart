@@ -19,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool obscureText = false;
+  bool obscureText = true;
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   String userLevel = LoggedIn.getUserLevel();

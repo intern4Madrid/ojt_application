@@ -20,53 +20,112 @@ class _DTRApprovalState extends State<DTRApproval> {
           child: DataTable(
             columns: [
               DataColumn(
-                label: Text(
-                  "Name",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color: kPrimaryColor,
+                    ),
+                    SizedBox(width: 5),
+                    Text(
+                      "Email",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Date",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.date_range,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Date",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Time In",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.timer,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Time In",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Time Out",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.timer,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Time Out",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Remarks",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: kPrimaryColor,
-                  ),
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.timer_rounded,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Total Time",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              DataColumn(
+                label: Row(
+                  children: [
+                    Icon(
+                      Icons.approval,
+                      color: kPrimaryColor,
+                    ),
+                    Text(
+                      "Remarks",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: kPrimaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -74,7 +133,7 @@ class _DTRApprovalState extends State<DTRApproval> {
               DataRow(
                 cells: [
                   DataCell(
-                    Text("John Eric Madrid"),
+                    Text("johnericmadrid21@gmail.com"),
                   ),
                   DataCell(
                     Text("Date:"),
@@ -86,25 +145,43 @@ class _DTRApprovalState extends State<DTRApproval> {
                     Text("Out:"),
                   ),
                   DataCell(
+                    Text("Total:"),
+                  ),
+                  DataCell(
                     DropdownButton(
                       value: dropdownValue,
                       items: [
                         DropdownMenuItem(
                           value: 'Pending',
                           child: Center(
-                            child: Text("Pending"),
+                            child: Text(
+                              "Pending",
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
                         DropdownMenuItem(
                           value: 'Approved',
                           child: Center(
-                            child: Text("Approved"),
+                            child: Text(
+                              "Approved",
+                              style: TextStyle(
+                                color: Colors.green,
+                              ),
+                            ),
                           ),
                         ),
                         DropdownMenuItem(
                           value: 'Not Approved',
                           child: Center(
-                            child: Text("Not Approved"),
+                            child: Text(
+                              "Not Approved",
+                              style: TextStyle(
+                                color: Colors.red.shade900,
+                              ),
+                            ),
                           ),
                         ),
                       ],

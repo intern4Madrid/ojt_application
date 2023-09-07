@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ojt_app/User/user_screen/user_add_timein_out.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/getter_setter/user_timeinout_getter_setter.dart';
 
 class AddTimeIn_Out extends StatefulWidget {
   const AddTimeIn_Out({super.key});
@@ -9,6 +11,10 @@ class AddTimeIn_Out extends StatefulWidget {
 }
 
 class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
+  String date = Time.getDate();
+  String timein = Time.getTimeIn();
+  String timeout = Time.getTimeOut();
+  String total = Time.getTotal();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,38 +89,38 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
               DataRow(
                 cells: [
                   DataCell(
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Date',
-                        labelStyle: TextStyle(
-                            fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                    Text(
+                      date,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                   DataCell(
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: '00:00 AM',
-                        labelStyle: TextStyle(
-                            fontStyle: FontStyle.italic, letterSpacing: .1),
+                    Text(
+                      timein,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                   DataCell(
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: '00:00 PM',
-                        labelStyle: TextStyle(
-                            fontStyle: FontStyle.italic, letterSpacing: .1),
+                    Text(
+                      timeout,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                   DataCell(
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Total',
-                        labelStyle: TextStyle(
-                            fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                    Text(
+                      total,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -147,6 +153,35 @@ class _AddTimeIn_OutState extends State<AddTimeIn_Out> {
                 ],
               ),
             ],
+          ),
+        ),
+      ),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            colors: [
+              Colors.red.shade900,
+              Colors.red,
+              Colors.red.shade400,
+            ],
+          ),
+        ),
+        child: SizedBox(
+          height: 70,
+          width: 70,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserAddTime(),
+                ),
+              );
+            },
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            label: Icon(Icons.add_outlined),
           ),
         ),
       ),
