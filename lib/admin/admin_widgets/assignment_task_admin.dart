@@ -17,6 +17,7 @@ class _AssigmentTaskState extends State<AssigmentTask> {
   String assign = Taskkk.getAssign();
   String duedate = Taskkk.getDueDate();
   String uploadfile = Taskkk.getUploadFile();
+  String link = Taskkk.getLink();
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +106,25 @@ class _AssigmentTaskState extends State<AssigmentTask> {
                     : Container(
                         child: prov.widget,
                       ),
+                SizedBox(height: 100),
+                Divider(
+                  color: Colors.black,
+                ),
+                Text(
+                  "Link:",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  link,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline),
+                ),
               ],
             ),
           ),

@@ -7,6 +7,7 @@ import 'package:ojt_app/utils/controller/assignment_controller.dart';
 import 'package:ojt_app/utils/getter_setter/admin_file_opener.dart';
 import 'package:ojt_app/utils/getter_setter/taskkk_getter_setter.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AddAssignment extends StatefulWidget {
   const AddAssignment({
@@ -22,6 +23,7 @@ AssignmentController assignmentController = AssignmentController();
 class _AddAssignmentState extends State<AddAssignment> {
   DateTime selectDate = DateTime.now();
   List<String> _emailAddresses = [];
+  List<String> _link = [];
 
   void _addEmails() {
     final inputText = assignmentController.email.text.trim();
@@ -31,6 +33,21 @@ class _AddAssignmentState extends State<AddAssignment> {
       _emailAddresses.addAll(emails.where((email) => email.isNotEmpty));
       assignmentController.email.clear();
     });
+  }
+
+  _addLinks() {
+    setState(() {
+      String link = assignmentController.link.text.trim();
+      if (link.isNotEmpty) {
+        assignmentController.link.clear();
+      }
+    });
+  }
+
+  _launchLink(String link) async {
+    if (await canLaunch(link)) {
+      await launch(link);
+    } else {}
   }
 
   @override
@@ -231,6 +248,41 @@ class _AddAssignmentState extends State<AddAssignment> {
             SizedBox(
               height: 10,
             ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: assignmentController.link,
+                onChanged: (value) {
+                  Taskkk.setLink(value);
+                },
+                validator: (value) {
+                  final RegExp driveLinkRegex = RegExp(
+                      r'^https:\/\/(drive|docs)\.google\.com\/[a-zA-Z0-9\-_?=&]+');
+
+                  if (!driveLinkRegex.hasMatch(value!)) {
+                    return 'Invalid Google Drive link';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: 'Link',
+                  hintText: 'Enter your Link',
+                  labelStyle: const TextStyle(
+                    fontStyle: FontStyle.italic,
+                    letterSpacing: 1.5,
+                  ),
+                  hintStyle: const TextStyle(fontStyle: FontStyle.italic),
+                  prefixIcon: Icon(
+                    Icons.link,
+                    color: Colors.black,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.all(10),
               child: FilePickerrrr(),

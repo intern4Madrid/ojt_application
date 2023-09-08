@@ -18,6 +18,7 @@ class _TaskUserState extends State<TaskUser> {
   String description = Taskkk.getDescription();
   String assign = Taskkk.getAssign();
   String duedate = Taskkk.getDueDate();
+  String link = Taskkk.getLink();
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +117,26 @@ class _TaskUserState extends State<TaskUser> {
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              Text(
+                "Link:",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Text(
+                link,
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline),
               ),
               SizedBox(
                 height: 100,

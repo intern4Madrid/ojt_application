@@ -26,6 +26,15 @@ class Taskkk {
     return _duedate;
   }
 
+  static String _email = '';
+  static void setEmail(String email) {
+    _email = email;
+  }
+
+  static getEmail() {
+    return _email;
+  }
+
   static String _uploadfile = '';
   static void setUploadFile(String uploadfile) {
     _uploadfile = uploadfile;
@@ -33,5 +42,14 @@ class Taskkk {
 
   static getUploadFile() {
     return _uploadfile;
+  }
+
+  static String _link = '';
+  static void setLink(String link) {
+    _link = link;
+  }
+
+  static getLink() {
+    return _link;
   }
 }
