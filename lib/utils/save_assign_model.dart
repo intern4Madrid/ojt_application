@@ -1,8 +1,10 @@
 class SaveAssignmentModel {
-  int? taskID;
+  String? taskID;
   String? assignmentTitle;
   String? description;
   String? duedate;
+  String? link;
+  String? uploadFile;
   String? status;
 
   SaveAssignmentModel(
@@ -10,13 +12,17 @@ class SaveAssignmentModel {
       this.assignmentTitle,
       this.description,
       this.duedate,
-      this.status});
+      this.status,
+      this.link,
+      this.uploadFile});
 
   SaveAssignmentModel.fromJson(Map<String, dynamic> json) {
     taskID = json['Task_ID'];
     assignmentTitle = json['Assignment_Title'];
     description = json['Description'];
     duedate = json['Duedate'];
+    link = json['Link'];
+    uploadFile = json['UploadFile'];
     status = json['Status'];
   }
 
@@ -26,6 +32,8 @@ class SaveAssignmentModel {
     data['Assignment_Title'] = this.assignmentTitle;
     data['Description'] = this.description;
     data['Duedate'] = this.duedate;
+    data['Link'] = this.link;
+    data['UploadFile'] = this.uploadFile;
     data['Status'] = this.status;
     return data;
   }

@@ -1,32 +1,36 @@
-// class AddAssignment {
-//   String? assign;
-//   String? description;
-//   String? duedate;
-//   String? email;
-//   String? uploadfile;
-//
-//   AddAssignment(
-//       {this.assign,
-//       this.description,
-//       this.duedate,
-//       this.email,
-//       this.uploadfile});
-//
-//   AddAssignment.fromJson(Map<String, dynamic> json) {
-//     assign = json['Assign'];
-//     description = json['Description'];
-//     duedate = json['DueDate'];
-//     email = json['Email'];
-//     uploadfile = json['UploadFile'];
-//   }
-//
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     data['Assign'] = this.assign;
-//     data['Description'] = this.description;
-//     data['DueDate'] = this.duedate;
-//     data['Email'] = this.email;
-//     data['UploadFile'] = this.uploadfile;
-//     return data;
-//   }
-// }
+class AddTaskModels {
+  int? taskID;
+  String? assignmentTitle;
+  String? description;
+  String? duedate;
+  String? fileLink;
+  String? status;
+
+  AddTaskModels(
+      {this.taskID,
+      this.assignmentTitle,
+      this.description,
+      this.duedate,
+      this.fileLink,
+      this.status});
+
+  AddTaskModels.fromJson(Map<String, dynamic> json) {
+    taskID = json['Task_ID'];
+    assignmentTitle = json['Assignment_Title'];
+    description = json['Description'];
+    duedate = json['Duedate'];
+    fileLink = json['File_Link'];
+    status = json['Status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['Task_ID'] = this.taskID;
+    data['Assignment_Title'] = this.assignmentTitle;
+    data['Description'] = this.description;
+    data['Duedate'] = this.duedate;
+    data['File_Link'] = this.fileLink;
+    data['Status'] = this.status;
+    return data;
+  }
+}

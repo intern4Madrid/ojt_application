@@ -83,7 +83,7 @@ class _TaskUserState extends State<TaskUser> {
                 assign,
                 style: TextStyle(
                   fontStyle: FontStyle.normal,
-                  fontSize: 15,
+                  fontSize: 18,
                 ),
               ),
               SizedBox(
@@ -95,6 +95,7 @@ class _TaskUserState extends State<TaskUser> {
               Text(
                 "Description:",
                 style: TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -103,7 +104,7 @@ class _TaskUserState extends State<TaskUser> {
                 description,
                 style: TextStyle(
                   fontStyle: FontStyle.normal,
-                  fontSize: 15,
+                  fontSize: 18,
                 ),
               ),
               SizedBox(
@@ -115,18 +116,23 @@ class _TaskUserState extends State<TaskUser> {
               Text(
                 "Attachments:",
                 style: TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(
-                height: 100,
-              ),
+              !prov.isAdded
+                  ? Container()
+                  : Container(
+                      child: prov.widget,
+                    ),
+              SizedBox(height: 100),
               Divider(
                 color: Colors.black,
               ),
               Text(
                 "Link:",
                 style: TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -139,7 +145,7 @@ class _TaskUserState extends State<TaskUser> {
                     decoration: TextDecoration.underline),
               ),
               SizedBox(
-                height: 100,
+                height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 1),

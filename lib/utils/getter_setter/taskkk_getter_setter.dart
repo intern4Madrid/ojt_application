@@ -52,4 +52,13 @@ class Taskkk {
   static getLink() {
     return _link;
   }
+
+  static String _userId = '';
+  static void setUserID(String userId) {
+    _userId = userId;
+  }
+
+  static getUserID() {
+    return _userId;
+  }
 }

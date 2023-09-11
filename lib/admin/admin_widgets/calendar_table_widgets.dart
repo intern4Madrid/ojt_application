@@ -2,9 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ojt_app/core/services/delete_event_api.dart';
 import 'package:ojt_app/theme.dart';
-import 'package:ojt_app/utils/controller/event_controller.dart';
+import 'package:ojt_app/utils/try_func.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../core/services/calendar_api.dart';
 
 class CalendarWindow extends StatefulWidget {
   const CalendarWindow({super.key});
@@ -21,7 +24,9 @@ class _CalendarWindowState extends State<CalendarWindow> {
 
   Map<String, List> mySelectedEvents = {};
 
-  EventController eventController = EventController();
+  final titleController = TextEditingController();
+  final descpController = TextEditingController();
+  final id = TextEditingController();
 
   List _listOfDayEvents(DateTime dateTime) {
     if (mySelectedEvents[DateFormat('yyyy-MM-dd').format(dateTime)] != null) {
@@ -31,7 +36,10 @@ class _CalendarWindowState extends State<CalendarWindow> {
     }
   }
 
+  String descTitle = TRY.getTitle();
+
   _showAddEventDialog() async {
+    CalendarApi calendarapi = CalendarApi();
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -44,14 +52,14 @@ class _CalendarWindowState extends State<CalendarWindow> {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-              controller: eventController.titleController,
+              controller: titleController,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Title',
               ),
             ),
             TextField(
-              controller: eventController.descpController,
+              controller: descpController,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
                 labelText: 'Description',
@@ -72,9 +80,9 @@ class _CalendarWindowState extends State<CalendarWindow> {
               "Add",
               style: TextStyle(color: kPrimaryColor),
             ),
-            onPressed: () {
-              if (eventController.titleController.text.isEmpty &&
-                  eventController.descpController.text.isEmpty) {
+            onPressed: () async {
+              if (titleController.text.isEmpty &&
+                  descpController.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
@@ -85,8 +93,19 @@ class _CalendarWindowState extends State<CalendarWindow> {
                 );
                 return;
               } else {
-                print(eventController.titleController.text);
-                print(eventController.descpController.text);
+                try {
+                  final response = await calendarapi.calendar(
+                    titleController.text,
+                    descpController.text,
+                  );
+
+                  if (response.statusCode == 200) {
+                  } else {
+                    print("API error: ${response.statusCode}");
+                  }
+                } catch (error) {
+                  print('Error during API request: $error');
+                }
 
                 setState(() {
                   if (mySelectedEvents[
@@ -95,15 +114,15 @@ class _CalendarWindowState extends State<CalendarWindow> {
                     mySelectedEvents[
                             DateFormat('yyyy-MM-dd').format(_selectedDate!)]
                         ?.add({
-                      "eventTitle": eventController.titleController.text,
-                      "eventDescp": eventController.descpController.text,
+                      "eventTitle": titleController.text,
+                      "eventDescp": descpController.text,
                     });
                   } else {
                     mySelectedEvents[
                         DateFormat('yyyy-MM-dd').format(_selectedDate!)] = [
                       {
-                        "eventTitle": eventController.titleController.text,
-                        "eventDescp": eventController.descpController.text,
+                        "eventTitle": titleController.text,
+                        "eventDescp": descpController.text,
                       }
                     ];
                   }
@@ -111,8 +130,8 @@ class _CalendarWindowState extends State<CalendarWindow> {
 
                 print(
                     "New event for backend developer ${json.encode(mySelectedEvents)}");
-                eventController.titleController.clear();
-                eventController.descpController.clear();
+                titleController.clear();
+                descpController.clear();
                 Navigator.pop(context);
                 return;
               }
@@ -125,6 +144,7 @@ class _CalendarWindowState extends State<CalendarWindow> {
 
   @override
   Widget build(BuildContext context) {
+    DeleteApi deleteEvent = DeleteApi();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -174,31 +194,87 @@ class _CalendarWindowState extends State<CalendarWindow> {
             if (_selectedDate != null)
               ..._listOfDayEvents(_selectedDate!).map(
                 (myEvents) => SingleChildScrollView(
-                  child: ListTile(
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.delete_forever_outlined,
-                        color: Colors.black,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kPrimaryColor, width: 3),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    ),
-                    leading: Icon(
-                      Icons.event_note_outlined,
-                      color: kPrimaryColor,
-                    ),
-                    title: Padding(
-                      padding: EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        'Event Title: ${myEvents['eventTitle']}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                      child: ListTile(
+                        trailing: IconButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Delete'),
+                                  content: Text(
+                                      'Are you sure you want to delete this event?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        String eventId = myEvents['eventId'];
+                                        try {
+                                          final response =
+                                              await deleteEvent.deleteEvent(
+                                            id.text,
+                                            titleController.text,
+                                            descpController.text,
+                                          );
+                                          if (response.statusCode == 200) {
+                                            setState(() {
+                                              _listOfDayEvents(_selectedDate!)
+                                                  .remove(myEvents);
+                                            });
+                                            Navigator.of(context).pop();
+                                          } else {
+                                            print(
+                                                "API error: ${response.statusCode}");
+                                          }
+                                        } catch (error) {
+                                          print(
+                                              'Error during API request: $error');
+                                        }
+                                      },
+                                      child: Text(
+                                        'Delete',
+                                        style: TextStyle(color: kPrimaryColor),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            Icons.delete_forever_outlined,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                    ),
-                    subtitle: Text(
-                      'Description:   ${myEvents['eventDescp']}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                        leading: Icon(
+                          Icons.event_note_outlined,
+                          color: Colors.black,
+                        ),
+                        title: Padding(
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Event Title: $descTitle',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, fontSize: 20),
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Description:   ${myEvents['eventDescp']}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 18),
+                        ),
                       ),
                     ),
                   ),
@@ -222,9 +298,23 @@ class _CalendarWindowState extends State<CalendarWindow> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           onPressed: () => _showAddEventDialog(),
-          label: Text('Add event'),
+          label: Text(
+            'Add event',
+            style: TextStyle(fontSize: 18),
+          ),
         ),
       ),
     );
   }
+
+  // void deleteEvent(DateTime selectedDate, String eventTitle) {
+  //   setState(() {
+  //     if (mySelectedEvents[DateFormat('yyyy-MM-dd').format(selectedDate)] !=
+  //         null) {
+  //       mySelectedEvents[DateFormat('yyyy-MM-dd').format(selectedDate)]!
+  //           .removeWhere((event) => event['eventTitle'] == eventTitle);
+  //     }
+  //   });
+  //   Navigator.of(context).pop();
+  // }
 }

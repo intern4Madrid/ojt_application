@@ -171,6 +171,9 @@ class _AddAssignmentState extends State<AddAssignment> {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      onChanged: (value) {
+                        Taskkk.setEmail(value);
+                      },
                       controller: assignmentController.email,
                       decoration: InputDecoration(
                         prefixIcon: Icon(

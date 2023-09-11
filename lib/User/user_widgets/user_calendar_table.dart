@@ -2,8 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ojt_app/core/services/delete_event_api.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/try_func.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../core/services/calendar_api.dart';
 
 class UserCalendarWindow extends StatefulWidget {
   const UserCalendarWindow({super.key});
@@ -22,6 +26,7 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
 
   final titleController = TextEditingController();
   final descpController = TextEditingController();
+  final id = TextEditingController();
 
   List _listOfDayEvents(DateTime dateTime) {
     if (mySelectedEvents[DateFormat('yyyy-MM-dd').format(dateTime)] != null) {
@@ -31,7 +36,10 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
     }
   }
 
+  String descTitle = TRY.getTitle();
+
   _showAddEventDialog() async {
+    CalendarApi calendarapi = CalendarApi();
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -72,7 +80,7 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
               "Add",
               style: TextStyle(color: kPrimaryColor),
             ),
-            onPressed: () {
+            onPressed: () async {
               if (titleController.text.isEmpty &&
                   descpController.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -85,8 +93,19 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
                 );
                 return;
               } else {
-                print(titleController.text);
-                print(descpController.text);
+                try {
+                  final response = await calendarapi.calendar(
+                    titleController.text,
+                    descpController.text,
+                  );
+
+                  if (response.statusCode == 200) {
+                  } else {
+                    print("API error: ${response.statusCode}");
+                  }
+                } catch (error) {
+                  print('Error during API request: $error');
+                }
 
                 setState(() {
                   if (mySelectedEvents[
@@ -125,6 +144,7 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
 
   @override
   Widget build(BuildContext context) {
+    DeleteApi deleteEvent = DeleteApi();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -174,23 +194,89 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
             if (_selectedDate != null)
               ..._listOfDayEvents(_selectedDate!).map(
                 (myEvents) => SingleChildScrollView(
-                  child: ListTile(
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.delete_forever_outlined,
-                        color: Colors.black,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kPrimaryColor, width: 3),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ListTile(
+                        trailing: IconButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Delete'),
+                                  content: Text(
+                                      'Are you sure you want to delete this event?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        String eventId = myEvents['eventId'];
+                                        try {
+                                          final response =
+                                              await deleteEvent.deleteEvent(
+                                            id.text,
+                                            titleController.text,
+                                            descpController.text,
+                                          );
+                                          if (response.statusCode == 200) {
+                                            setState(() {
+                                              _listOfDayEvents(_selectedDate!)
+                                                  .remove(myEvents);
+                                            });
+                                            Navigator.of(context).pop();
+                                          } else {
+                                            print(
+                                                "API error: ${response.statusCode}");
+                                          }
+                                        } catch (error) {
+                                          print(
+                                              'Error during API request: $error');
+                                        }
+                                      },
+                                      child: Text(
+                                        'Delete',
+                                        style: TextStyle(color: kPrimaryColor),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            Icons.delete_forever_outlined,
+                            color: Colors.black,
+                          ),
+                        ),
+                        leading: Icon(
+                          Icons.event_note_outlined,
+                          color: Colors.black,
+                        ),
+                        title: Padding(
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Event Title: $descTitle',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, fontSize: 20),
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Description:   ${myEvents['eventDescp']}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 18),
+                        ),
                       ),
                     ),
-                    leading: Icon(
-                      Icons.event_note_outlined,
-                      color: kPrimaryColor,
-                    ),
-                    title: Padding(
-                      padding: EdgeInsets.only(bottom: 8.0),
-                      child: Text('Event Title: ${myEvents['eventTitle']}'),
-                    ),
-                    subtitle: Text('Description:   ${myEvents['eventDescp']}'),
                   ),
                 ),
               ),
@@ -220,4 +306,15 @@ class _UserCalendarWindowState extends State<UserCalendarWindow> {
       ),
     );
   }
+
+// void deleteEvent(DateTime selectedDate, String eventTitle) {
+//   setState(() {
+//     if (mySelectedEvents[DateFormat('yyyy-MM-dd').format(selectedDate)] !=
+//         null) {
+//       mySelectedEvents[DateFormat('yyyy-MM-dd').format(selectedDate)]!
+//           .removeWhere((event) => event['eventTitle'] == eventTitle);
+//     }
+//   });
+//   Navigator.of(context).pop();
+// }
 }

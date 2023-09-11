@@ -1,33 +1,17 @@
-// void saveAssignment() async {
-//   final url = Uri.parse('http://192.168.0.132:9000/api/add_task');
-//   final response = await http.post(
-//     url,
-//     body: {
-//       'assignment_title': 'Assignment Title',
-//       'description': 'Assignment Description',
-//       'duedate': 'Due Date',
-//     },
-//   );
-//
-//   if (response.statusCode == 200) {
-//     print('Task added successfully');
-//   } else {
-//     print('Failed to add task');
-//   }
-// }
-
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:ojt_app/utils/getter_setter/save_assign_model.dart';
+import 'package:ojt_app/utils/save_assign_model.dart';
 
 class saveAssignment {
-  Future<http.Response> assigngment(
-    int taskID,
+  Future<http.Response> assignment(
+    String taskID,
     String assignmentTitle,
     String description,
     String duedate,
     String status,
+    String link,
+    // String uploadFile,
   ) async {
     try {
       String url = 'http://192.168.0.132:9000/api/add_task';
@@ -41,6 +25,8 @@ class saveAssignment {
             description: description,
             duedate: duedate,
             status: status,
+            link: link,
+            // uploadFile: uploadFile,
           ),
         ),
       );
