@@ -50,7 +50,17 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           ],
         ),
       ),
-      body: UserTask(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              UserTask(),
+              SizedBox(height: 8),
+            ],
+          ),
+        ),
+      ),
       drawer: NavigationDrawer(
         children: [
           Column(

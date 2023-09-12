@@ -32,24 +32,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(80),
-              child: Center(
-                child: Text(
-                  "TrainEase",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                  ),
-                ),
-              ),
-            ),
-          ],
+        title: Text(
+          "TrainEase",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.normal,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Task(),
+              SizedBox(height: 8),
+            ],
+          ),
         ),
       ),
-      body: Task(),
       drawer: NavigationDrawer(
         children: [
           Column(

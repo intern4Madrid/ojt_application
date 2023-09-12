@@ -9,10 +9,15 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: MediaQuery.of(context).size.height * 0.08,
-      width: double.infinity,
+      height: 50,
+      width: 340,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16), color: kPrimaryColor),
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(colors: [
+            Colors.red.shade900,
+            Colors.red,
+            Colors.red.shade200,
+          ])),
       child: Text(
         buttonText,
         style: textButton.copyWith(color: kWhiteColor),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:ojt_app/User/user_widgets/user_bottom_navigation_bar_widgets.dart';
 import 'package:ojt_app/theme.dart';
 import 'package:ojt_app/utils/controller/user_add_timein_out.dart';
 import 'package:ojt_app/utils/getter_setter/user_timeinout_getter_setter.dart';
+
+import '../../core/services/time_in_out_api.dart';
 
 class UserAddTime extends StatefulWidget {
   const UserAddTime({super.key});
@@ -17,6 +20,7 @@ TimeController timeController = TimeController();
 class _UserAddTimeState extends State<UserAddTime> {
   @override
   Widget build(BuildContext context) {
+    TimeIn timeInApi = TimeIn();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -163,23 +167,35 @@ class _UserAddTimeState extends State<UserAddTime> {
               backgroundColor: Colors.transparent,
               elevation: 0,
             ),
-            onPressed: () {
-              Time.getDate();
-              Time.getTimeIn();
-              Time.getTimeOut();
-              Time.getTotal();
+            onPressed: () async {
+              if (Time.getDate() != null &&
+                  Time.getTimeIn() != null &&
+                  Time.getTimeOut() != null) {
+                try {
+                  http.Response response = await timeInApi.timein(
+                    Time.getDate(),
+                    Time.getTimeIn(),
+                    Time.getTimeOut(),
+                  );
+                  print(Time.getDate());
+                  print(Time.getTimeIn());
+                  print(Time.getTimeOut());
+                  if (response.statusCode == 200) {
+                    print('Posted successfully');
+                  } else {
+                    print('Error: ${response.statusCode}');
+                  }
+                } catch (error) {
+                  print('Error: $error');
+                }
 
-              print(Time.getDate());
-              print(Time.getTimeIn());
-              print(Time.getTimeOut());
-              print(Time.getTotal());
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserBottomNavigation(),
-                ),
-              );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserBottomNavigation(),
+                  ),
+                );
+              }
             },
             child: Text(
               'Post',

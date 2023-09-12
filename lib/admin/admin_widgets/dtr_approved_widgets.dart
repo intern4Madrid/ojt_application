@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ojt_app/theme.dart';
+import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
+import 'package:ojt_app/utils/getter_setter/user_timeinout_getter_setter.dart';
 
 class DTRApproval extends StatefulWidget {
   const DTRApproval({super.key});
@@ -9,6 +11,11 @@ class DTRApproval extends StatefulWidget {
 }
 
 class _DTRApprovalState extends State<DTRApproval> {
+  String Email = LoggedIn.getEmail();
+  String In = Time.getTimeIn();
+  String Out = Time.getTimeOut();
+  String Date = Time.getDate();
+  String Total = Time.getTotal();
   String dropdownValue = 'Pending';
   @override
   Widget build(BuildContext context) {
@@ -133,19 +140,19 @@ class _DTRApprovalState extends State<DTRApproval> {
               DataRow(
                 cells: [
                   DataCell(
-                    Text("johnericmadrid21@gmail.com"),
+                    Text(Email),
                   ),
                   DataCell(
-                    Text("Date:"),
+                    Text(Date),
                   ),
                   DataCell(
-                    Text("In:"),
+                    Text(In),
                   ),
                   DataCell(
-                    Text("Out:"),
+                    Text(Out),
                   ),
                   DataCell(
-                    Text("Total:"),
+                    Text(Total),
                   ),
                   DataCell(
                     DropdownButton(

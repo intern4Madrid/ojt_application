@@ -265,7 +265,7 @@ class _CalendarWindowState extends State<CalendarWindow> {
                         title: Padding(
                           padding: EdgeInsets.only(bottom: 5),
                           child: Text(
-                            'Event Title: $descTitle',
+                            'Event Title: ${myEvents['eventTitle']}',
                             style: TextStyle(
                                 fontWeight: FontWeight.w800, fontSize: 20),
                           ),

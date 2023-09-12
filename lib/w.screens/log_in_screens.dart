@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:ojt_app/User/user_widgets/user_bottom_navigation_bar_widgets.dart';
-import 'package:ojt_app/admin/admin_widgets/bottom_navigation_bar_widgets.dart';
+import 'package:ojt_app/User/user_screen/user_loading_screen.dart';
+import 'package:ojt_app/admin/admin_screen/loading_screen.dart';
 import 'package:ojt_app/core/services/login_api.dart';
 import 'package:ojt_app/utils/getter_setter/loggedin_getter_setter.dart';
 import 'package:ojt_app/w.screens/reset_password_screens.dart';
@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           colors: [
                             Colors.red.shade900,
                             Colors.red,
-                            Colors.red.shade400,
+                            Colors.red.shade200,
                           ],
                         ),
                       ),
@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BottomNavigation(),
+                                    builder: (context) => AdminLoadingScreen(),
                                   ),
                                 );
                               } else if (jsonDecode(
@@ -206,8 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        UserBottomNavigation(),
+                                    builder: (context) => UserLoadingScreen(),
                                   ),
                                 );
                               }
